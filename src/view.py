@@ -14,6 +14,5 @@ class View(Ui_MainWindow):
         self.controller = controller
         self.model = model
         self.setupUi(parent)
-        utils.form_camera_parameter()
 
 

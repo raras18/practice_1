@@ -8,6 +8,7 @@ from .Moildev import Moildev
 import json
 from .camera_source import CameraSource
 from .camera_parameter import CameraParametersForm
+from .camera_type import camera_type
 
 try:
     from PyQt6 import QtWidgets, QtCore, QtGui
@@ -16,6 +17,13 @@ try:
 except:
     from PyQt5 import QtWidgets, QtCore, QtGui
     pyqt_version = "pyqt5"
+
+database_camera_parameters = "camera_parameter/camera_parameters.json"
+
+
+def select_camera_name(theme="dark"):
+    camera_name = camera_type(database_camera_parameters, theme)
+    return camera_name
 
 
 def select_source_camera():
@@ -27,7 +35,7 @@ def select_source_camera():
 
 def form_camera_parameter():
     open_cam_params = QtWidgets.QDialog()
-    CameraParametersForm(open_cam_params)
+    CameraParametersForm(open_cam_params, database_camera_parameters)
     open_cam_params.exec()
 
 

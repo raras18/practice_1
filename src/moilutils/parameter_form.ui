@@ -411,7 +411,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="0" column="1">
-                <widget class="QLineEdit" name="camera_name">
+                <widget class="QLineEdit" name="label_camera_name">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -461,7 +461,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="0" column="3">
-                <widget class="QLineEdit" name="image_width">
+                <widget class="QLineEdit" name="label_image_width">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -591,7 +591,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="7" column="1">
-                <widget class="QLineEdit" name="image_height">
+                <widget class="QLineEdit" name="label_image_height">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -625,7 +625,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="6" column="1">
-                <widget class="QLineEdit" name="ratio">
+                <widget class="QLineEdit" name="label_ratio">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -659,7 +659,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="5" column="1">
-                <widget class="QLineEdit" name="image_center_Y">
+                <widget class="QLineEdit" name="label_image_center_Y">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -693,7 +693,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="4" column="1">
-                <widget class="QLineEdit" name="image_center_X">
+                <widget class="QLineEdit" name="label_image_center_X">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -727,7 +727,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="3" column="1">
-                <widget class="QLineEdit" name="cam_sensor_height">
+                <widget class="QLineEdit" name="label_cam_sensor_height">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -761,7 +761,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="2" column="1">
-                <widget class="QLineEdit" name="cam_sensor_width">
+                <widget class="QLineEdit" name="label_cam_sensor_width">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -795,7 +795,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="1" column="1">
-                <widget class="QLineEdit" name="camera_fov">
+                <widget class="QLineEdit" name="label_camera_fov">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -941,7 +941,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="7" column="3">
-                <widget class="QLineEdit" name="parameter5">
+                <widget class="QLineEdit" name="label_parameter5">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -975,7 +975,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="6" column="3">
-                <widget class="QLineEdit" name="parameter4">
+                <widget class="QLineEdit" name="label_parameter4">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1009,7 +1009,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="5" column="3">
-                <widget class="QLineEdit" name="parameter3">
+                <widget class="QLineEdit" name="label_parameter3">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1043,7 +1043,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="4" column="3">
-                <widget class="QLineEdit" name="parameter2">
+                <widget class="QLineEdit" name="label_parameter2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1077,7 +1077,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="3" column="3">
-                <widget class="QLineEdit" name="parameter1">
+                <widget class="QLineEdit" name="label_parameter1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1111,7 +1111,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="2" column="3">
-                <widget class="QLineEdit" name="parameter0">
+                <widget class="QLineEdit" name="label_parameter0">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1145,7 +1145,7 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="1" column="3">
-                <widget class="QLineEdit" name="calib_ratio">
+                <widget class="QLineEdit" name="label_calib_ratio">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
