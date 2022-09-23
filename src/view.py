@@ -1,4 +1,5 @@
 from design.ui_template import Ui_MainWindow
+from moilutils import utils
 
 
 class View(Ui_MainWindow):
@@ -13,5 +14,6 @@ class View(Ui_MainWindow):
         self.controller = controller
         self.model = model
         self.setupUi(parent)
+        utils.form_camera_parameter()
 
 

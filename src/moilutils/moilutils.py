@@ -6,6 +6,8 @@ import numpy as np
 import pyexiv2
 from .Moildev import Moildev
 import json
+from .camera_source import CameraSource
+from .camera_parameter import CameraParametersForm
 
 try:
     from PyQt6 import QtWidgets, QtCore, QtGui
@@ -16,10 +18,23 @@ except:
     pyqt_version = "pyqt5"
 
 
+def select_source_camera():
+    open_cam_source = QtWidgets.QDialog()
+    source_cam = CameraSource(open_cam_source)
+    open_cam_source.exec()
+    return source_cam.camera_source
+
+
+def form_camera_parameter():
+    open_cam_params = QtWidgets.QDialog()
+    CameraParametersForm(open_cam_params)
+    open_cam_params.exec()
+
+
 def show_image_to_label(label, image, width, angle=0, plusIcon=False):
     """
     This function Display an image to the label widget on the user interface. It requires some arguments
-    such as image, label name and image width. suppose you don't like to draw a center point icon (+)
+    such as image, label name and image width. suppose you don't like to draw a center point icons (+)
     you can change the plusIcon argument to become False.
 
     Args:
@@ -27,7 +42,7 @@ def show_image_to_label(label, image, width, angle=0, plusIcon=False):
         image: Image that want to show on user interface
         width: the width of result image, this value will calculate the height following the ratio.
         angle: the angle of image
-        plusIcon: Drawing the plus icon on the image, by default this will be False.
+        plusIcon: Drawing the plus icons on the image, by default this will be False.
                     if you want to draw you have to change to be True.
 
     Returns:
@@ -44,7 +59,7 @@ def show_image_to_label(label, image, width, angle=0, plusIcon=False):
     image = resize_image(image, width)
     image = rotate_image(image, angle)
     if plusIcon:
-        # draw plus icon on image and show to label
+        # draw plus icons on image and show to label
         h, w = image.shape[:2]
         w1 = round((w / 2) - 10)
         h1 = round(h / 2)
@@ -487,3 +502,4 @@ def calculate_ratio_image2label(label, image):
     ratio_x = width / w
     ratio_y = height / h
     return ratio_x, ratio_y
+
