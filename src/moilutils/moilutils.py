@@ -1,0 +1,489 @@
+import datetime
+import os
+import shutil
+import cv2
+import numpy as np
+import pyexiv2
+from .Moildev import Moildev
+import json
+
+try:
+    from PyQt6 import QtWidgets, QtCore, QtGui
+    pyqt_version = "pyqt6"
+
+except:
+    from PyQt5 import QtWidgets, QtCore, QtGui
+    pyqt_version = "pyqt5"
+
+
+def show_image_to_label(label, image, width, angle=0, plusIcon=False):
+    """
+    This function Display an image to the label widget on the user interface. It requires some arguments
+    such as image, label name and image width. suppose you don't like to draw a center point icon (+)
+    you can change the plusIcon argument to become False.
+
+    Args:
+        label: The label will contain image to show in your user interface
+        image: Image that want to show on user interface
+        width: the width of result image, this value will calculate the height following the ratio.
+        angle: the angle of image
+        plusIcon: Drawing the plus icon on the image, by default this will be False.
+                    if you want to draw you have to change to be True.
+
+    Returns:
+        Showing image on the label
+
+    - Example:
+
+    .. code-block:: python
+
+        image = MoilUtils.showImageToLabel(label, image, 400, 0, False)
+    """
+
+    height = calculate_height(image, width)
+    image = resize_image(image, width)
+    image = rotate_image(image, angle)
+    if plusIcon:
+        # draw plus icon on image and show to label
+        h, w = image.shape[:2]
+        w1 = round((w / 2) - 10)
+        h1 = round(h / 2)
+        w2 = round((w / 2) + 10)
+        h2 = round(h / 2)
+        w3 = round(w / 2)
+        h3 = round((h / 2) - 10)
+        w4 = round(w / 2)
+        h4 = round((h / 2)) + 10
+        cv2.line(image, (w1, h1), (w2, h2), (0, 255, 0), 1)
+        cv2.line(image, (w3, h3), (w4, h4), (0, 255, 0), 1)
+
+    label.setMinimumSize(QtCore.QSize(width, height))
+    label.setMaximumSize(QtCore.QSize(width, height))
+    image = QtGui.QImage(image.data, image.shape[1], image.shape[0],
+                         QtGui.QImage.Format.Format_RGB888).rgbSwapped()
+    label.setPixmap(QtGui.QPixmap.fromImage(image))
+
+
+def connect_to_moildev(camera_parameter=None, type_camera=None, parent=None):
+    if camera_parameter:
+        moildev = Moildev.Moildev(camera_parameter, type_camera)
+
+    else:
+        QtWidgets.QMessageBox.warning(
+            parent,
+            "Warning!!",
+            "The image not support for this application, \n\nPlease contact developer!!")
+        print("the image not support for this application, please contact developer!!")
+        moildev = None
+
+    return moildev
+
+
+def check_usb_camera_available():
+    """
+    Detect the USB camera port available and show it on message box prompt.
+
+    Returns:
+
+    """
+    all_camera_idx_available = []
+    for camera_idx in range(5):
+        cap = cv2.VideoCapture(camera_idx)
+        if cap.isOpened():
+            all_camera_idx_available.append(camera_idx)
+            cap.release()
+
+    return all_camera_idx_available
+
+
+def read_image(image_path):
+    """
+    Method loads an image from the specified file (use the cv2.imread function to complete the task).
+    If the image cannot be read (because of missing file, improper permissions, unsupported or invalid format)
+    then this method returns an empty matrix.
+
+    Args:
+        image_path : The path of image file
+
+    return:
+        Image: load image
+
+    - Example:
+
+    .. code-block:: python
+
+        image = read_image(image_path)
+    """
+    image = cv2.imread(image_path)
+    if image is None:
+        raise FileNotFoundError("`{}` cannot be loaded".format(image_path))
+    return image
+
+
+def remap_image(image, map_x, map_y):
+    """
+    The purpose is to generate a pair of X-Y Maps for the specified zenith angle, azimuthal angle,
+    and zoom factor. The result X-Y Maps can be used later to remap the original fish-eye image to
+    the target angle image with undistortion result.
+
+    Args:
+        image: Input image
+        map_x: The mapping function in the x direction.
+        map_y: The mapping function in the y direction.
+
+    Returns:
+        image: Updating the image after remapping
+
+    - Example:
+
+    .. code-block:: python
+
+        image_anypoint = remap_image(image, mapX_anypoint, mapY_anypoint)
+    """
+    image = cv2.remap(image, map_x, map_y, cv2.INTER_CUBIC)
+    return image
+
+
+def select_file(parent=None, title="Open file", dir_path=".", file_filter=""):
+    """
+    Find the file path from the directory computer.
+
+    Args:
+        parent (): The parent windows to show dialog always in front of user interface
+        title: the title window of open dialog
+        file_filter: determine the specific file want to search
+        dir_path: Navigate to specific directory
+
+    return:
+        file_path: location
+    """
+    if pyqt_version == "pyqt6":
+        option = QtWidgets.QFileDialog.Option.DontUseNativeDialog
+        file_path, _ = QtWidgets.QFileDialog.getOpenFileName(parent, title, dir_path,
+                                                             file_filter, options=option)
+    else:
+        options = QtWidgets.QFileDialog.DontUseNativeDialog
+        file_path, _ = QtWidgets.QFileDialog.getOpenFileName(parent, title, dir_path,
+                                                             file_filter,
+                                                             options=options)
+    return file_path
+
+
+def select_directory(parent=None, title='Select Folder'):
+    """
+    Select directory to save image. This function create to make it not always ask the directory by open dialog,
+    after directory save not None, it will pass open dialog prompt.
+
+    Returns:
+        None.
+    """
+    if pyqt_version == "pyqt6":
+        option = QtWidgets.QFileDialog.Option.DontUseNativeDialog
+        directory = QtWidgets.QFileDialog.getExistingDirectory(parent, title, options=option)
+    else:
+        option = QtWidgets.QFileDialog.DontUseNativeDialog
+        directory = QtWidgets.QFileDialog.getExistingDirectory(parent, title, options=option)
+    return directory
+
+
+def copyDirectory(src_directory, dst_directory):
+    """
+    Copy directory.
+
+    Args:
+        src_directory (): source path or original path folder
+        dst_directory (): destination directory.
+
+    Returns:
+        file copied in destination directory.
+    """
+    directoryName = os.path.basename(src_directory)
+    destinationPath = os.path.join(dst_directory, directoryName)
+    shutil.copytree(src_directory, destinationPath)
+
+
+def resize_image(image, width):
+    """
+    Resize image original with our size we want
+
+    Args:
+        image (): image original
+        width (): image width we want
+
+    Returns:
+        result: image has been resized
+
+    """
+    h, w = image.shape[:2]
+    r = width / float(w)
+    hi = round(h * r)
+    result = cv2.resize(image, (width, hi),
+                        interpolation=cv2.INTER_AREA)
+    return result
+
+
+def rotate_image(src, angle, center=None, scale=1.0):
+    """
+    Rotation of images are among the most basic operations under the broader class of
+    Affine transformations. This function will return the image after turning clockwise
+    or anticlockwise depending on the angle given.
+
+    Args:
+        src: original image
+        angle: the value angle for turn the image
+        center: determine the specific coordinate to rotate image
+        scale: scale image
+
+    Returns:
+        dst image: rotated image
+
+    - Example:
+
+    .. code-block:: python
+
+        image = rotate_image(image, 90)
+    """
+    h, w = src.shape[:2]
+    if center is None:
+        center = (w / 2, h / 2)
+    m = cv2.getRotationMatrix2D(center, angle, scale)
+    rotated = cv2.warpAffine(src, m, (w, h))
+    return rotated
+
+
+def calculate_height(image, width):
+    """
+    Return the height value of an image by providing the width value. This high
+    value is calculated by keeping the aspect ratio of the image.
+
+    Args:
+        image: original image
+        width: size image we want
+
+    Returns:
+        height: height image
+
+    - Example:
+
+    .. code-block:: python
+
+        height = calculate_height(image, 140)
+    """
+
+    h, w = image.shape[:2]
+    r = width / float(w)
+    height = round(h * r)
+    return height
+
+
+def draw_polygon(image, mapX, mapY):
+    """
+    Return image with a drawn polygon on it from mapX and mapY generated by maps anypoint or panorama.
+
+    Args:
+        image: Original image
+        mapX: map image X from anypoint process
+        mapY: map image Y from anypoint process
+
+    return:
+        image: map x, map y
+
+    - Example:
+
+    .. code-block:: python
+
+        image = draw_polygon(image,mapX,mapY)
+    """
+    hi, wi = image.shape[:2]
+    X1 = []
+    Y1 = []
+    X2 = []
+    Y2 = []
+    X3 = []
+    Y3 = []
+    X4 = []
+    Y4 = []
+
+    x = 0
+    while x < wi:
+        a = mapX[0,]
+        b = mapY[0,]
+        ee = mapX[-1,]
+        f = mapY[-1,]
+
+        if a[x] == 0. or b[x] == 0.:
+            pass
+        else:
+            X1.append(a[x])
+            Y1.append(b[x])
+
+        if f[x] == 0. or ee[x] == 0.:
+            pass
+        else:
+            Y3.append(f[x])
+            X3.append(ee[x])
+        x += 10
+
+    y = 0
+    while y < hi:
+        c = mapX[:, 0]
+        d = mapY[:, 0]
+        g = mapX[:, -1]
+        h = mapY[:, -1]
+
+        # eliminate the value 0 for map X
+        if d[y] == 0. or c[y] == 0.:  # or d[y] and c[y] == 0.0:
+            pass
+        else:
+            Y2.append(d[y])
+            X2.append(c[y])
+
+        # eliminate the value 0 for map Y
+        if h[y] == 0. or g[y] == 0.:
+            pass
+        else:
+            Y4.append(h[y])
+            X4.append(g[y])
+
+        # render every 10 times, it will be like 1, 11, 21 and so on.
+        y += 10
+
+    p = np.array([X1, Y1])
+    q = np.array([X2, Y2])
+    r = np.array([X3, Y3])
+    s = np.array([X4, Y4])
+    points = p.T.reshape((-1, 1, 2))
+    points2 = q.T.reshape((-1, 1, 2))
+    points3 = r.T.reshape((-1, 1, 2))
+    points4 = s.T.reshape((-1, 1, 2))
+
+    # Draw polyline on original image
+    cv2.polylines(image, np.int32([points]), False, (0, 0, 255), 10)
+    cv2.polylines(image, np.int32([points2]), False, (255, 0, 0), 10)
+    cv2.polylines(image, np.int32([points3]), False, (0, 255, 0), 10)
+    cv2.polylines(image, np.int32([points4]), False, (0, 255, 0), 10)
+    return image
+
+
+def write_camera_type(image_file, typeCamera):
+    """
+    Read the camera used from metadata image.
+
+    Args:
+        image_file ():
+        typeCamera ():
+
+    Returns:
+
+    """
+    img = pyexiv2.Image(image_file)
+    pyexiv2.registerNs('a namespace for image', 'Image')
+    img.modify_xmp({'Xmp.Image.cameraName': typeCamera})
+    img.close()
+
+
+def read_camera_type(image_file):
+    """
+    Read the camera used from metadata image.
+
+    Args:
+        image_file ():
+
+    Returns:
+
+    """
+    img = pyexiv2.Image(image_file)
+    try:
+        camera_type = img.read_xmp()['Xmp.Image.cameraName']
+
+    except:
+        camera_type = None
+    img.close()
+    return camera_type
+
+
+def draw_point(image, coordinate_point, radius=5):
+    """
+    Drawing point on the image.
+
+    Args:
+        image ():
+        coordinate_point ():
+        radius ():
+
+    Returns:
+
+    """
+
+    if coordinate_point is not None:
+        w, h = image.shape[:2]
+        if h >= 1000:
+            cv2.circle(image, coordinate_point, radius, (200, 5, 200), 30, -1)
+        else:
+            cv2.circle(image, coordinate_point, radius, (200, 5, 200), -1)
+    return image
+
+
+def saveImage(image, dst_directory, type_camera):
+    """
+    saved image
+    Args:
+        image ():
+        dst_directory (): destination directory
+        type_camera ():
+
+    Returns:
+
+    """
+    ss = datetime.datetime.now().strftime("%m_%d_%H_%M_%S")
+    name = dst_directory + "/" + str(ss) + ".png"
+    cv2.imwrite(name, image)
+    write_camera_type(name, type_camera)
+    return ss
+
+
+def drawLine(image, coordinatePoint_1=None, coordinatePoint_2=None):
+    """
+
+    Args:
+        image ():
+        coordinatePoint_1 ():
+        coordinatePoint_2 ():
+
+    Returns:
+
+    """
+    # draw anypoint line
+    if coordinatePoint_1 is None:
+        h, w = image.shape[:2]
+        if h >= 1000:
+            cv2.line(image, (0, 0), (0, h), (255, 0, 0), 10)
+            cv2.line(image, (0, 0), (w, 0), (0, 0, 255), 10)
+            cv2.line(image, (0, h), (w, h), (0, 255, 0), 10)
+            cv2.line(image, (w, 0), (w, h), (0, 255, 0), 10)
+        else:
+            cv2.line(image, (0, 0), (0, h), (255, 0, 0), 2)
+            cv2.line(image, (0, 0), (w, 0), (0, 0, 255), 2)
+            cv2.line(image, (0, h), (w, h), (0, 255, 0), 2)
+            cv2.line(image, (w, 0), (w, h), (0, 255, 0), 2)
+    else:
+        # this for draw line on image
+        cv2.line(image, coordinatePoint_1, coordinatePoint_2, (0, 255, 0), 1)
+    return image
+
+
+def calculate_ratio_image2label(label, image):
+    """
+    Calculate the initial ratio of the image.
+
+    Returns:
+        ratio_x : ratio width between image and ui window.
+        ratio_y : ratio height between image and ui window.
+        center : find the center image on window user interface.
+    """
+    h = label.height()
+    w = label.width()
+    height, width = image.shape[:2]
+    ratio_x = width / w
+    ratio_y = height / h
+    return ratio_x, ratio_y
