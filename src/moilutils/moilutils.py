@@ -18,15 +18,28 @@ except:
     from PyQt5 import QtWidgets, QtCore, QtGui
     pyqt_version = "pyqt5"
 
-database_camera_parameters = "camera_parameter/camera_parameters.json"
+database_camera_parameters = "src/moilutils/camera_parameters.json"
 
 
 def select_camera_name(theme="dark"):
+    """
+
+    Args:
+        theme:
+
+    Returns:
+
+    """
     camera_name = camera_type(database_camera_parameters, theme)
     return camera_name
 
 
 def select_source_camera():
+    """
+
+    Returns:
+
+    """
     open_cam_source = QtWidgets.QDialog()
     source_cam = CameraSource(open_cam_source)
     open_cam_source.exec()
@@ -34,6 +47,11 @@ def select_source_camera():
 
 
 def form_camera_parameter():
+    """
+
+    Returns:
+
+    """
     open_cam_params = QtWidgets.QDialog()
     CameraParametersForm(open_cam_params, database_camera_parameters)
     open_cam_params.exec()
@@ -88,16 +106,37 @@ def show_image_to_label(label, image, width, angle=0, plusIcon=False):
 
 
 def connect_to_moildev(camera_parameter=None, type_camera=None, parent=None):
-    if camera_parameter:
-        moildev = Moildev.Moildev(camera_parameter, type_camera)
+    """
+
+    Args:
+        camera_parameter:
+        type_camera:
+        parent:
+
+    Returns:
+
+    """
+    if camera_parameter is None:
+        try:
+            moildev = Moildev.Moildev(database_camera_parameters, type_camera)
+        except:
+            QtWidgets.QMessageBox.warning(
+                parent,
+                "Warning!!",
+                "The image not support for this application, \n\nPlease contact developer!!")
+            print("the image not support for this application, please contact developer!!")
+            moildev = None
 
     else:
-        QtWidgets.QMessageBox.warning(
-            parent,
-            "Warning!!",
-            "The image not support for this application, \n\nPlease contact developer!!")
-        print("the image not support for this application, please contact developer!!")
-        moildev = None
+        try:
+            moildev = Moildev.Moildev(camera_parameter, type_camera)
+        except:
+            QtWidgets.QMessageBox.warning(
+                parent,
+                "Warning!!",
+                "The image not support for this application, \n\nPlease contact developer!!")
+            print("the image not support for this application, please contact developer!!")
+            moildev = None
 
     return moildev
 

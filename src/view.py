@@ -14,5 +14,10 @@ class View(Ui_MainWindow):
         self.controller = controller
         self.model = model
         self.setupUi(parent)
+        # utils.form_camera_parameter()
+        a = utils.select_camera_name()
+        print(a)
+        file = utils.select_file()
+        utils.connect_to_moildev(camera_parameter=file)
 
 
