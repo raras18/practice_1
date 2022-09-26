@@ -4,7 +4,6 @@ import cv2
 try:
     from PyQt6 import QtWidgets, QtCore, QtGui
     from .ui_camera_source_pyqt6 import Ui_Dialog
-
     pyqt_version = "pyqt6"
 
 except:

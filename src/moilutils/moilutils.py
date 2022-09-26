@@ -18,10 +18,10 @@ except:
     from PyQt5 import QtWidgets, QtCore, QtGui
     pyqt_version = "pyqt5"
 
-database_camera_parameters = "src/moilutils/camera_parameters.json"
+database_camera_parameters = "moilutils/camera_parameters.json"
 
 
-def select_camera_name(theme="dark"):
+def select_type_camera(theme="dark"):
     """
 
     Args:
