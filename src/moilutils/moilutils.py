@@ -248,7 +248,7 @@ def select_directory(parent=None, title='Select Folder'):
     return directory
 
 
-def copyDirectory(src_directory, dst_directory):
+def copy_directory(src_directory, dst_directory):
     """
     Copy directory.
 
@@ -429,13 +429,14 @@ def draw_polygon(image, mapX, mapY):
 
 def write_camera_type(image_file, typeCamera):
     """
-    Read the camera used from metadata image.
+    write the camera used from metadata image.
 
     Args:
-        image_file ():
-        typeCamera ():
+        image_file (): image file path
+        typeCamera (): the name of type camera (string)
 
     Returns:
+        None
 
     """
     img = pyexiv2.Image(image_file)
@@ -446,12 +447,13 @@ def write_camera_type(image_file, typeCamera):
 
 def read_camera_type(image_file):
     """
-    Read the camera used from metadata image.
+    Read the camera used from metadata image using pyexiv2 library.
 
     Args:
-        image_file ():
+        image_file (): image file path.
 
     Returns:
+        camera type (string)
 
     """
     img = pyexiv2.Image(image_file)
@@ -466,12 +468,12 @@ def read_camera_type(image_file):
 
 def draw_point(image, coordinate_point, radius=5):
     """
-    Drawing point on the image.
+    Drawing point on the image from the coordinate point given.
 
     Args:
-        image ():
-        coordinate_point ():
-        radius ():
+        image (): source image
+        coordinate_point (): the coordinate point (x, y)
+        radius (): the size of the point (scale by radius)
 
     Returns:
 
@@ -486,33 +488,38 @@ def draw_point(image, coordinate_point, radius=5):
     return image
 
 
-def saveImage(image, dst_directory, type_camera):
+def saveImage(image, dst_directory, type_camera=None):
     """
-    saved image
+    saved image on the local directory, if type_camera is not None it will be written on metadata image
+
     Args:
-        image ():
+        image (): Source image want to save.
         dst_directory (): destination directory
-        type_camera ():
+        type_camera (): Type camera (string)
 
     Returns:
+        the file name (string)
 
     """
     ss = datetime.datetime.now().strftime("%m_%d_%H_%M_%S")
     name = dst_directory + "/" + str(ss) + ".png"
     cv2.imwrite(name, image)
-    write_camera_type(name, type_camera)
+    if type_camera is not None:
+        write_camera_type(name, type_camera)
     return ss
 
 
 def drawLine(image, coordinatePoint_1=None, coordinatePoint_2=None):
     """
+    Draw line on the image from the coordinate given.
 
     Args:
-        image ():
-        coordinatePoint_1 ():
-        coordinatePoint_2 ():
+        image (): source image
+        coordinatePoint_1 (): coordinate point 1 (x, y)
+        coordinatePoint_2 (): coordinate point 2 (x, y)
 
     Returns:
+        image with line drawn
 
     """
     # draw anypoint line
@@ -549,4 +556,26 @@ def calculate_ratio_image2label(label, image):
     ratio_x = width / w
     ratio_y = height / h
     return ratio_x, ratio_y
+
+
+def cropping_image(image, right, bottom, left, top):
+    """
+    Cropping image by ratio from every side.
+
+    Args:
+        image: Input image
+        right: ratio of right side (1-0)
+        bottom: ratio of bottom side (1-0)
+        left: ratio of left side (0-1)
+        top: ratio of top side (0-1)
+
+    Returns:
+        image has already cropping
+
+    """
+    a_right = round(image.shape[1] * right)
+    a_bottom = round(image.shape[0] * bottom)
+    a_left = round(image.shape[1] * left)
+    a_top = round(image.shape[0] * top)
+    return image[a_top:a_top + a_bottom, a_left:a_left + a_right]
 

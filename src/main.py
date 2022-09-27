@@ -1,7 +1,7 @@
 """
 Project Name: MoilApps Templates
 Writer : Haryanto
-PROJECT MADE WITH: Qt Designer
+PROJECT MADE WITH: PyQt & Qt Designer
 Build for: MOIL-LAB
 Copyright: MOIL-2022
 

@@ -121,6 +121,7 @@ class Moildev(object):
     def __setCamera_parameter(self, parameter, cameraType):
         """
         Set up the configuration of the camera parameter
+
         Args:
             parameter (): the *.json file
             cameraType (): type of the camera
@@ -337,7 +338,8 @@ class Moildev(object):
         return self.__image_height
 
     def maps_anypoint(self, alpha, beta, zoom, mode=1):
-        """The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters,
+        """
+        The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters,
         the result X-Y Maps can be used later to remap the original fisheye image to the target angle image.
 
         Args:
@@ -384,12 +386,13 @@ class Moildev(object):
 
     def maps_anypoint_car(self, pitch, yaw, roll, zoom):
         """
+        To generate a pair of X-Y Maps from anypoint mode 2 plus extension roll rotation for the result image.
 
         Args:
-            pitch:
-            yaw:
-            roll:
-            zoom:
+            pitch: pitch rotation (from -90 to 90 degree)
+            yaw: yaw rotation (from -90 to 90 degree)
+            roll: roll rotation (from -90 to 90 degree)
+            zoom: zoom scale (1 - 20)
 
         Returns:
 
