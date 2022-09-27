@@ -12,6 +12,7 @@ class Moildev(object):
         This is the initial configuration that you need to provide the camera parameter. The camera parameter is the
         result from calibration camera by MOIL laboratory. before the successive functions can work correctly,
         configuration is necessary in the beginning of program.
+
         Args:
             file_camera_parameter (): *.json file
             camera_type = the name of the camera type used (use if yore pass the parameter using *.json file)

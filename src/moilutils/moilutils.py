@@ -23,12 +23,13 @@ database_camera_parameters = "moilutils/camera_parameters.json"
 
 def select_type_camera(theme="dark"):
     """
+    This function is to select the type of camera we want to use
 
     Args:
         theme:
-
+            dark
     Returns:
-
+        camera name
     """
     camera_name = camera_type(database_camera_parameters, theme)
     return camera_name
@@ -36,9 +37,10 @@ def select_type_camera(theme="dark"):
 
 def select_source_camera():
     """
+    This function is for select source camera which one the detected on usb or http (browsing)
 
     Returns:
-
+        source camera
     """
     open_cam_source = QtWidgets.QDialog()
     source_cam = CameraSource(open_cam_source)
@@ -48,8 +50,13 @@ def select_source_camera():
 
 def form_camera_parameter():
     """
+    This fucntion is for showing form camera parameter will we have
 
-    Returns:
+    - Example:
+
+    .. code-block:: python
+
+        params = mutils.form_camera_parameter()
 
     """
     open_cam_params = QtWidgets.QDialog()
@@ -107,14 +114,15 @@ def show_image_to_label(label, image, width, angle=0, plusIcon=False):
 
 def connect_to_moildev(camera_parameter=None, type_camera=None, parent=None):
     """
+    This function is to will be use connected camera type
 
     Args:
-        camera_parameter:
-        type_camera:
-        parent:
+        camera_parameter: choose camera used
+        type_camera: load camera type
+        parent: None
 
     Returns:
-
+        Moildev
     """
     if camera_parameter is None:
         try:
@@ -146,7 +154,7 @@ def check_usb_camera_available():
     Detect the USB camera port available and show it on message box prompt.
 
     Returns:
-
+            camera available
     """
     all_camera_idx_available = []
     for camera_idx in range(5):
@@ -237,7 +245,8 @@ def select_directory(parent=None, title='Select Folder'):
     after directory save not None, it will pass open dialog prompt.
 
     Returns:
-        None.
+        None
+
     """
     if pyqt_version == "pyqt6":
         option = QtWidgets.QFileDialog.Option.DontUseNativeDialog
@@ -250,7 +259,7 @@ def select_directory(parent=None, title='Select Folder'):
 
 def copyDirectory(src_directory, dst_directory):
     """
-    Copy directory.
+    This function is to Copy directory.
 
     Args:
         src_directory (): source path or original path folder
@@ -266,7 +275,7 @@ def copyDirectory(src_directory, dst_directory):
 
 def resize_image(image, width):
     """
-    Resize image original with our size we want
+    This function is for resize image original with our size we want
 
     Args:
         image (): image original
@@ -429,14 +438,14 @@ def draw_polygon(image, mapX, mapY):
 
 def write_camera_type(image_file, typeCamera):
     """
-    Read the camera used from metadata image.
+    This function for Read the camera used from metadata image.
 
     Args:
         image_file ():
         typeCamera ():
 
     Returns:
-
+        None
     """
     img = pyexiv2.Image(image_file)
     pyexiv2.registerNs('a namespace for image', 'Image')
@@ -449,9 +458,10 @@ def read_camera_type(image_file):
     Read the camera used from metadata image.
 
     Args:
-        image_file ():
+        image_file (): load file image
 
     Returns:
+        camera type
 
     """
     img = pyexiv2.Image(image_file)
@@ -466,7 +476,7 @@ def read_camera_type(image_file):
 
 def draw_point(image, coordinate_point, radius=5):
     """
-    Drawing point on the image.
+    This fucntiopn is for Drawing point on the image.
 
     Args:
         image ():
@@ -474,7 +484,7 @@ def draw_point(image, coordinate_point, radius=5):
         radius ():
 
     Returns:
-
+        image
     """
 
     if coordinate_point is not None:
@@ -488,13 +498,14 @@ def draw_point(image, coordinate_point, radius=5):
 
 def saveImage(image, dst_directory, type_camera):
     """
-    saved image
+    This function is for saved image on application
     Args:
         image ():
         dst_directory (): destination directory
         type_camera ():
 
     Returns:
+        ss (screenshot)
 
     """
     ss = datetime.datetime.now().strftime("%m_%d_%H_%M_%S")
@@ -506,14 +517,14 @@ def saveImage(image, dst_directory, type_camera):
 
 def drawLine(image, coordinatePoint_1=None, coordinatePoint_2=None):
     """
-
+    This function for drawline coordinate systems image
     Args:
-        image ():
-        coordinatePoint_1 ():
-        coordinatePoint_2 ():
+        image ():load
+        coordinatePoint_1 ():Horizontal
+        coordinatePoint_2 ():Vertical
 
     Returns:
-
+        image
     """
     # draw anypoint line
     if coordinatePoint_1 is None:
@@ -536,7 +547,7 @@ def drawLine(image, coordinatePoint_1=None, coordinatePoint_2=None):
 
 def calculate_ratio_image2label(label, image):
     """
-    Calculate the initial ratio of the image.
+    This function for calculate the initial ratio of the image.
 
     Returns:
         ratio_x : ratio width between image and ui window.

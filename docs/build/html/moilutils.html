@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moildev package &mdash; moilapps-template 2022 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> moilapps-template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Definition and overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How To Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moilapps-template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Moildev package</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="moildev-package">
+<h1>Moildev package<a class="headerlink" href="#moildev-package" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To help understand each function in Moildev library, it is recommended to read each docstring in the function one by one.</p>
+</div>
+<span class="target" id="module-moilutils.Moildev.Moildev"></span><dl class="py class">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">moilutils.Moildev.Moildev.</span></span><span class="sig-name descname"><span class="pre">Moildev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_camera_parameter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the initial configuration that you need to provide the camera parameter. The camera parameter is the
+result from calibration camera by MOIL laboratory. before the successive functions can work correctly,
+configuration is necessary in the beginning of program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>file_camera_parameter</em>) – <a href="#id1"><span class="problematic" id="id2">*</span></a>.json file</p></li>
+<li><p><strong>used</strong> (<em>cameraName = the name of the camera</em>) – </p></li>
+<li><p><strong>used</strong> – </p></li>
+<li><p><strong>view</strong> (<em>cameraFov = camera field of</em>) – </p></li>
+<li><p><strong>width</strong> (<em>sensor_width = size of sensor</em>) – </p></li>
+<li><p><strong>height</strong> (<em>sensor_height = size of sensor</em>) – </p></li>
+<li><p><strong>x-axis</strong> (<em>Icx = center image in</em>) – </p></li>
+<li><p><strong>y-axis</strong> (<em>Icy = center image in</em>) – </p></li>
+<li><p><strong>image</strong> (<em>imageHeight = the size of height</em>) – </p></li>
+<li><p><strong>image</strong> – </p></li>
+<li><p><strong>image</strong> – </p></li>
+<li><p><strong>ratio</strong> (<em>calibrationRatio = the value of calibration</em>) – </p></li>
+<li><p><strong>calibration</strong> (<em>parameter0 .. parameter5= intrinsic fisheye camera parameter get from</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>for more detail, please reference <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.version">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.version" title="Permalink to this definition"></a></dt>
+<dd><p>Showing the version of the library and the new feature updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Moildev version</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.camera_name">
+<span class="sig-name descname"><span class="pre">camera_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.camera_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.camera_name" title="Permalink to this definition"></a></dt>
+<dd><p>Get camera name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Camera name (string)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.camera_fov">
+<span class="sig-name descname"><span class="pre">camera_fov</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.camera_fov"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.camera_fov" title="Permalink to this definition"></a></dt>
+<dd><p>Get Field of View Camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>FoV camera (int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.icx">
+<span class="sig-name descname"><span class="pre">icx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.icx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.icx" title="Permalink to this definition"></a></dt>
+<dd><p>Get center image from width image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Image center X (int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.icy">
+<span class="sig-name descname"><span class="pre">icy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.icy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.icy" title="Permalink to this definition"></a></dt>
+<dd><p>Get center image from height image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Image center Y(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.image_width">
+<span class="sig-name descname"><span class="pre">image_width</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.image_width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.image_width" title="Permalink to this definition"></a></dt>
+<dd><p>Get the size width of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>image width(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.image_height">
+<span class="sig-name descname"><span class="pre">image_height</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.image_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.image_height" title="Permalink to this definition"></a></dt>
+<dd><p>Get the size height of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>image height(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.maps_anypoint">
+<span class="sig-name descname"><span class="pre">maps_anypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.maps_anypoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.maps_anypoint" title="Permalink to this definition"></a></dt>
+<dd><p>The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters,
+the result X-Y Maps can be used later to remap the original fisheye image to the target angle image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>mode</em>) – value of zenith distance(float).</p></li>
+<li><p><strong>(</strong><strong>)</strong> – value of azimuthal distance based on cartography system(float)</p></li>
+<li><p><strong>(</strong><strong>)</strong> – value of zoom(float)</p></li>
+<li><p><strong>(</strong><strong>)</strong> – selection anypoint mode(1 or 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the mapping matrices X
+mapY: the mapping matrices Y</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>mapX</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.maps_anypoint_car">
+<span class="sig-name descname"><span class="pre">maps_anypoint_car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.maps_anypoint_car"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.maps_anypoint_car" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pitch</strong> – </p></li>
+<li><p><strong>yaw</strong> – </p></li>
+<li><p><strong>roll</strong> – </p></li>
+<li><p><strong>zoom</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.maps_panorama">
+<span class="sig-name descname"><span class="pre">maps_panorama</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.maps_panorama"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.maps_panorama" title="Permalink to this definition"></a></dt>
+<dd><p>To generate a pair of X-Y Maps for alpha within 0 … alpha_max degree, the result X-Y Maps can be used later
+to generate a panorama image from the original fisheye image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>alpha_max</em>) – the minimum alpha degree given</p></li>
+<li><p><strong>(</strong><strong>)</strong> – the maximum alpha degree given. The recommended value is half of camera FOV. For example, use
+90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the mapping matrices X
+mapY: the mapping matrices Y</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>mapX</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.maps_panorama_rotation">
+<span class="sig-name descname"><span class="pre">maps_panorama_rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_alpha_degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_beta_degree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.maps_panorama_rotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.maps_panorama_rotation" title="Permalink to this definition"></a></dt>
+<dd><p>To generate a pair of X-Y Maps for alpha within 0..alpha_max degree, the result X-Y Maps can be used later
+to generate a panorama image from the original fisheye image. The panorama image centered at the 3D
+direction with alpha = iC_alpha_degree and beta = iC_beta_degree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha_max</strong> – max of alpha. The recommended value is half of camera FOV. For example, use
+90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.</p></li>
+<li><p><strong>iC_alpha_degree</strong> – alpha angle of panorama center.</p></li>
+<li><p><strong>iC_beta_degree</strong> – beta angle of panorama center.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New mapX and mapY.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.maps_x_panorama_rotation">
+<span class="sig-name descname"><span class="pre">maps_x_panorama_rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_alpha_degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_beta_degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_alpha_from</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_alpha_end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.maps_x_panorama_rotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.maps_x_panorama_rotation" title="Permalink to this definition"></a></dt>
+<dd><p>To generate a pair of X-Y Maps for alpha within 0 alpha_max degree, the result X-Y Maps can be used later
+to generate a panorama image from the original fisheye image. The panorama image centered at the 3D
+direction with alpha = iC_alpha_degree and beta = iC_beta_degree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha_max</strong> – max of alpha. The recommended value is half of camera FOV. For example, use
+90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.</p></li>
+<li><p><strong>iC_alpha_degree</strong> – alpha angle of panorama center.</p></li>
+<li><p><strong>iC_beta_degree</strong> – beta angle of panorama center.</p></li>
+<li><p><strong>p_alpha_end</strong> – </p></li>
+<li><p><strong>p_alpha_from</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New mapX and mapY.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.maps_reverse">
+<span class="sig-name descname"><span class="pre">maps_reverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_beta_degree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.maps_reverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.maps_reverse" title="Permalink to this definition"></a></dt>
+<dd><p>Create maps for reverse image. this can work using input panorama rotation image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alpha_max</strong> – max of alpha. The recommended value is half of camera FOV. For example, use
+90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.</p></li>
+<li><p><strong>iC_beta_degree</strong> – beta angle of panorama center.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>maps_x_reverse, maps_y_reverse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.anypoint">
+<span class="sig-name descname"><span class="pre">anypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.anypoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.anypoint" title="Permalink to this definition"></a></dt>
+<dd><p>Generate anypoint view image. for mode 1, the result rotation is betaOffset degree rotation around the
+Z-axis(roll) after alphaOffset degree rotation around the X-axis(pitch). for mode 2, The result rotation
+is thetaY degree rotation around the Y-axis(yaw) after thetaX degree rotation around the X-axis(pitch).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>mode</em>) – source image given</p></li>
+<li><p><strong>(</strong><strong>)</strong> – the alpha offset that corespondent to the pitch rotation</p></li>
+<li><p><strong>(</strong><strong>)</strong> – the beta offset that corespondent to the yaw rotation</p></li>
+<li><p><strong>(</strong><strong>)</strong> – decimal zoom factor, normally 1..12</p></li>
+<li><p><strong>(</strong><strong>)</strong> – the mode view selected</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>anypoint image</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.panorama">
+<span class="sig-name descname"><span class="pre">panorama</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.panorama"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.panorama" title="Permalink to this definition"></a></dt>
+<dd><p>The panorama image centered at the 3D direction with alpha = iC_alpha_degree and beta = iC_beta_degree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – image source given</p></li>
+<li><p><strong>alpha_min</strong> – </p></li>
+<li><p><strong>alpha_max</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Panorama view image</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_alpha_degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_beta_degree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.reverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.reverse" title="Permalink to this definition"></a></dt>
+<dd><p>To generate the image reverse image from panorama that can change the focus direction from the original
+images. The panorama reverse image centered at the 3D direction with alpha_max = max of alpha and beta =
+iC_beta_degree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – input image</p></li>
+<li><p><strong>alpha_max</strong> – max of alpha. The recommended value is half of camera FOV. For example, use
+90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.</p></li>
+<li><p><strong>iC_alpha_degree</strong> – alpha angle of panorama center</p></li>
+<li><p><strong>iC_beta_degree</strong> – beta angle of panorama center</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>reverse image</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.new_reverse">
+<span class="sig-name descname"><span class="pre">new_reverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_alpha_degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iC_beta_degree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.new_reverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.new_reverse" title="Permalink to this definition"></a></dt>
+<dd><p>New function for change the optical point of fisheye image. using this function, it will improve
+the speed of the computation processing more than 30%</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – input image</p></li>
+<li><p><strong>alpha_max</strong> – max of alpha. The recommended value is half of camera FOV. For example, use
+90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.</p></li>
+<li><p><strong>iC_alpha_degree</strong> – alpha angle of panorama center</p></li>
+<li><p><strong>iC_beta_degree</strong> – beta angle of panorama center</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>reverse image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.get_alpha_from_rho">
+<span class="sig-name descname"><span class="pre">get_alpha_from_rho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.get_alpha_from_rho"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.get_alpha_from_rho" title="Permalink to this definition"></a></dt>
+<dd><p>Get the alpha from rho image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rho</strong> – the value of rho given</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>alpha</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.get_rho_from_alpha">
+<span class="sig-name descname"><span class="pre">get_rho_from_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.get_rho_from_alpha"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.get_rho_from_alpha" title="Permalink to this definition"></a></dt>
+<dd><p>Get rho image from alpha given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alpha</strong> – the value of alpha given</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rho image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev.get_alpha_beta">
+<span class="sig-name descname"><span class="pre">get_alpha_beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinateX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinateY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev.get_alpha_beta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev.get_alpha_beta" title="Permalink to this definition"></a></dt>
+<dd><p>Get the alpha beta from specific coordinate image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coordinateX</strong> – </p></li>
+<li><p><strong>coordinateY</strong> – </p></li>
+<li><p><strong>mode</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>alpha, beta</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>please reference: <a class="reference external" href="https://github.com/MoilOrg/moildev">https://github.com/MoilOrg/moildev</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="moilutils-package">
+<h1>Moilutils package<a class="headerlink" href="#moilutils-package" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To help understand each function in moilUtils, it is recommended to read each docstring in the function one by one.</p>
+</div>
+<span class="target" id="module-moilutils.moilutils"></span><dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.select_type_camera">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">select_type_camera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dark'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#select_type_camera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.select_type_camera" title="Permalink to this definition"></a></dt>
+<dd><p>This function is to select the type of camera we want to use</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theme</strong> – dark</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>camera name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.select_source_camera">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">select_source_camera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#select_source_camera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.select_source_camera" title="Permalink to this definition"></a></dt>
+<dd><p>This function is for select source camera which one the detected on usb or http (browsing)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>source camera</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.form_camera_parameter">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">form_camera_parameter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#form_camera_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.form_camera_parameter" title="Permalink to this definition"></a></dt>
+<dd><p>This fucntion is for showing form camera parameter will we have</p>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">mutils</span><span class="o">.</span><span class="n">form_camera_parameter</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.show_image_to_label">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">show_image_to_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plusIcon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#show_image_to_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.show_image_to_label" title="Permalink to this definition"></a></dt>
+<dd><p>This function Display an image to the label widget on the user interface. It requires some arguments
+such as image, label name and image width. suppose you don’t like to draw a center point icons (+)
+you can change the plusIcon argument to become False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> – The label will contain image to show in your user interface</p></li>
+<li><p><strong>image</strong> – Image that want to show on user interface</p></li>
+<li><p><strong>width</strong> – the width of result image, this value will calculate the height following the ratio.</p></li>
+<li><p><strong>angle</strong> – the angle of image</p></li>
+<li><p><strong>plusIcon</strong> – Drawing the plus icons on the image, by default this will be False.
+if you want to draw you have to change to be True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Showing image on the label</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">MoilUtils</span><span class="o">.</span><span class="n">showImageToLabel</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.connect_to_moildev">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">connect_to_moildev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_parameter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_camera</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#connect_to_moildev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.connect_to_moildev" title="Permalink to this definition"></a></dt>
+<dd><p>This function is to will be use connected camera type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera_parameter</strong> – choose camera used</p></li>
+<li><p><strong>type_camera</strong> – load camera type</p></li>
+<li><p><strong>parent</strong> – None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Moildev</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.check_usb_camera_available">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">check_usb_camera_available</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#check_usb_camera_available"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.check_usb_camera_available" title="Permalink to this definition"></a></dt>
+<dd><p>Detect the USB camera port available and show it on message box prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>camera available</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.read_image">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">read_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#read_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.read_image" title="Permalink to this definition"></a></dt>
+<dd><p>Method loads an image from the specified file (use the cv2.imread function to complete the task).
+If the image cannot be read (because of missing file, improper permissions, unsupported or invalid format)
+then this method returns an empty matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image_path</strong> – The path of image file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>load image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Image</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">read_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.remap_image">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">remap_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#remap_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.remap_image" title="Permalink to this definition"></a></dt>
+<dd><p>The purpose is to generate a pair of X-Y Maps for the specified zenith angle, azimuthal angle,
+and zoom factor. The result X-Y Maps can be used later to remap the original fish-eye image to
+the target angle image with undistortion result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – Input image</p></li>
+<li><p><strong>map_x</strong> – The mapping function in the x direction.</p></li>
+<li><p><strong>map_y</strong> – The mapping function in the y direction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Updating the image after remapping</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>image</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_anypoint</span> <span class="o">=</span> <span class="n">remap_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mapX_anypoint</span><span class="p">,</span> <span class="n">mapY_anypoint</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.select_file">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">select_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Open</span> <span class="pre">file'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#select_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.select_file" title="Permalink to this definition"></a></dt>
+<dd><p>Find the file path from the directory computer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>parent</em>) – The parent windows to show dialog always in front of user interface</p></li>
+<li><p><strong>title</strong> – the title window of open dialog</p></li>
+<li><p><strong>file_filter</strong> – determine the specific file want to search</p></li>
+<li><p><strong>dir_path</strong> – Navigate to specific directory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>location</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>file_path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.select_directory">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">select_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">Folder'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#select_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.select_directory" title="Permalink to this definition"></a></dt>
+<dd><p>Select directory to save image. This function create to make it not always ask the directory by open dialog,
+after directory save not None, it will pass open dialog prompt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.copyDirectory">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">copyDirectory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_directory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#copyDirectory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.copyDirectory" title="Permalink to this definition"></a></dt>
+<dd><p>This function is to Copy directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>dst_directory</em>) – source path or original path folder</p></li>
+<li><p><strong>(</strong><strong>)</strong> – destination directory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>file copied in destination directory.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.resize_image">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">resize_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#resize_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.resize_image" title="Permalink to this definition"></a></dt>
+<dd><p>This function is for resize image original with our size we want</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>width</em>) – image original</p></li>
+<li><p><strong>(</strong><strong>)</strong> – image width we want</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>image has been resized</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.rotate_image">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">rotate_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#rotate_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.rotate_image" title="Permalink to this definition"></a></dt>
+<dd><p>Rotation of images are among the most basic operations under the broader class of
+Affine transformations. This function will return the image after turning clockwise
+or anticlockwise depending on the angle given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> – original image</p></li>
+<li><p><strong>angle</strong> – the value angle for turn the image</p></li>
+<li><p><strong>center</strong> – determine the specific coordinate to rotate image</p></li>
+<li><p><strong>scale</strong> – scale image</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rotated image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dst image</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">rotate_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.calculate_height">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">calculate_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#calculate_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.calculate_height" title="Permalink to this definition"></a></dt>
+<dd><p>Return the height value of an image by providing the width value. This high
+value is calculated by keeping the aspect ratio of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – original image</p></li>
+<li><p><strong>width</strong> – size image we want</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>height image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>height</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="n">calculate_height</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">140</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.draw_polygon">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">draw_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapX</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapY</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#draw_polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.draw_polygon" title="Permalink to this definition"></a></dt>
+<dd><p>Return image with a drawn polygon on it from mapX and mapY generated by maps anypoint or panorama.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – Original image</p></li>
+<li><p><strong>mapX</strong> – map image X from anypoint process</p></li>
+<li><p><strong>mapY</strong> – map image Y from anypoint process</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>map x, map y</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>image</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">draw_polygon</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">mapX</span><span class="p">,</span><span class="n">mapY</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.write_camera_type">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">write_camera_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeCamera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#write_camera_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.write_camera_type" title="Permalink to this definition"></a></dt>
+<dd><p>This function for Read the camera used from metadata image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>typeCamera</em>) – </p></li>
+<li><p><strong>(</strong><strong>)</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.read_camera_type">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">read_camera_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#read_camera_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.read_camera_type" title="Permalink to this definition"></a></dt>
+<dd><p>Read the camera used from metadata image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>(</strong><strong>)</strong> (<em>image_file</em>) – load file image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>camera type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.draw_point">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">draw_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinate_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#draw_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.draw_point" title="Permalink to this definition"></a></dt>
+<dd><p>This fucntiopn is for Drawing point on the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>)</strong> (<em>radius</em>) – </p></li>
+<li><p><strong>(</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>)</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.saveImage">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">saveImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#saveImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.saveImage" title="Permalink to this definition"></a></dt>
+<dd><p>This function is for saved image on application
+:param image ():
+:param dst_directory (): destination directory
+:param type_camera ():</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ss (screenshot)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.drawLine">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">drawLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinatePoint_1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinatePoint_2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#drawLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.drawLine" title="Permalink to this definition"></a></dt>
+<dd><p>This function for drawline coordinate systems image
+:param image (): load
+:param coordinatePoint_1 (): Horizontal
+:param coordinatePoint_2 (): Vertical</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="moilutils.moilutils.calculate_ratio_image2label">
+<span class="sig-prename descclassname"><span class="pre">moilutils.moilutils.</span></span><span class="sig-name descname"><span class="pre">calculate_ratio_image2label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#calculate_ratio_image2label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.calculate_ratio_image2label" title="Permalink to this definition"></a></dt>
+<dd><p>This function for calculate the initial ratio of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ratio width between image and ui window.
+ratio_y : ratio height between image and ui window.
+center : find the center image on window user interface.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ratio_x</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, moil-lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

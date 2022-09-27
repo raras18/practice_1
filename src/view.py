@@ -15,4 +15,6 @@ class View(Ui_MainWindow):
         self.model = model
         self.setupUi(parent)
 
+        type = mutils.check_usb_camera_available()
+
 
