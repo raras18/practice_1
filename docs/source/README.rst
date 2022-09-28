@@ -8,6 +8,7 @@ This function originally was written on C++ to take the advantage of speed compu
    :scale: 90 %
    :alt: alternate text
    :align: center
+|
 
 The class of Moutils
 The name class is Moutils Its required parameter camera parameter which is .json file from camera calibration in MOIL Lab.

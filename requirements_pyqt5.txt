@@ -1,4 +1,3 @@
 PyQt5
 opencv_python==4.2.0.32
 pyexiv2
-json

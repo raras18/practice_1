@@ -2,7 +2,7 @@ import math
 import json
 import cv2
 import numpy as np
-from . import MoilCV
+from src.moilutils.Moildev import MoilCV
 import warnings
 
 
@@ -14,21 +14,24 @@ class Moildev(object):
         configuration is necessary in the beginning of program.
 
         Args:
-            file_camera_parameter (): *.json file
-            camera_type = the name of the camera type used (use if yore pass the parameter using *.json file)
-            cameraName = the name of the camera used
-            cameraFov = camera field of view (FOV)
-            sensor_width = size of sensor width
-            sensor_height = size of sensor height
-            Icx = center image in x-axis
-            Icy = center image in y-axis
-            ratio = the value of the ratio image
-            imageWidth = the size of width image
-            imageHeight = the size of height image
-            calibrationRatio = the value of calibration ratio
-            parameter0 .. parameter5= intrinsic fisheye camera parameter get from calibration
+            file_camera_parameter: *.json file
+            camera_type : the name of the camera type used (use if yore pass the parameter using *.json file)
+            cameraName : the name of the camera used
+            cameraFov : camera field of view (FOV)
+            sensor_width : size of sensor width
+            sensor_height : size of sensor height
+            Icx : center image in x-axis
+            Icy : center image in y-axis
+            ratio : the value of the ratio image
+            imageWidth : the size of width image
+            imageHeight : the size of height image
+            calibrationRatio : the value of calibration ratio
+            parameter0 .. parameter5 : intrinsic fisheye camera parameter get from calibration
 
-        for more detail, please reference https://github.com/MoilOrg/moildev
+        .. code-block :: markdown
+
+            for more detail, please reference https://github.com/MoilOrg/moildev
+
         """
         super(Moildev, self).__init__()
         self.__alpha_to_rho_table = []
@@ -121,13 +124,15 @@ class Moildev(object):
 
     def __setCamera_parameter(self, parameter, cameraType):
         """
-        Set up the configuration of the camera parameter
+        This function is for set up the configuration of the camera parameter
+
         Args:
-            parameter (): the *.json file
-            cameraType (): type of the camera
+            parameter: the *.json file
+            cameraType: type of the camera
 
         Returns:
             None
+
         """
         with open(parameter) as f:
             data = json.load(f)
@@ -178,10 +183,11 @@ class Moildev(object):
 
     def __init_alpha_rho_table(self):
         """
-        Create list for initial alpha to rho(height image).
+        This function is for the create list for initial alpha to rho(height image).
 
         Returns:
             Initial alpha and rho table.
+
         """
         for i in range(1800):
             alpha = i / 10 * math.pi / 180
@@ -230,7 +236,7 @@ class Moildev(object):
 
     def __import_moildev(self):
         """
-        Create moildev instance from Moildev SDK share object library.
+        This function is for the create moildev instance from Moildev SDK share object library.
 
         Returns:
             Moildev object (private attribute for this class)
@@ -284,75 +290,84 @@ class Moildev(object):
 
     def camera_name(self):
         """
-        Get camera name.
+        This function is for get camera name.
 
         Returns:
             Camera name (string)
+
         """
         return self.__camera_name
 
     def camera_fov(self):
         """
-        Get Field of View Camera.
+        This fuinction is for get Field of View Camera.
 
         Returns:
             FoV camera (int)
+
         """
         return self.__camera_fov
 
     def icx(self):
         """
-        Get center image from width image.
+        This function is for get center image from width image.
 
         Returns:
             Image center X (int)
+
         """
         return self.__icx
 
     def icy(self):
         """
-        Get center image from height image.
+        This function is for get center image from height image.
 
         Returns:
             Image center Y(int)
+
         """
         if self.__icy is not None:
             return self.__icy
 
     def image_width(self):
         """
-        Get the size width of the image.
+        This function is for get the size width of the image.
 
         Returns:
             image width(int)
+
         """
         return self.__image_width
 
     def image_height(self):
         """
-        Get the size height of the image.
+        This function is for get the size height of the image.
 
         Returns:
             image height(int)
+
         """
         return self.__image_height
 
     def maps_anypoint(self, alpha, beta, zoom, mode=1):
-        """The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters,
+        """
+        The purpose is to generate a pair of X-Y Maps for the specified alpha, beta and zoom parameters,
         the result X-Y Maps can be used later to remap the original fisheye image to the target angle image.
 
         Args:
-            alpha (): value of zenith distance(float).
-            beta (): value of azimuthal distance based on cartography system(float)
-            zoom (): value of zoom(float)
-            mode (): selection anypoint mode(1 or 2)
+            alpha: value of zenith distance(float).
+            beta: value of azimuthal distance based on cartography system(float)
+            zoom: value of zoom(float)
+            mode: selection anypoint mode(1 or 2)
 
         Returns:
             mapX: the mapping matrices X
             mapY: the mapping matrices Y
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         if mode == 1:
             if beta < 0:
@@ -385,12 +400,13 @@ class Moildev(object):
 
     def maps_anypoint_car(self, pitch, yaw, roll, zoom):
         """
+        To generate a pair of X-Y Maps from anypoint mode 2 plus extension roll rotation for the result image.
 
         Args:
-            pitch:
-            yaw:
-            roll:
-            zoom:
+            pitch: pitch rotation (from -90 to 90 degree)
+            yaw: yaw rotation (from -90 to 90 degree)
+            roll: roll rotation (from -90 to 90 degree)
+            zoom: zoom scale (1 - 20)
 
         Returns:
 
@@ -404,16 +420,19 @@ class Moildev(object):
         to generate a panorama image from the original fisheye image.
 
         Args:
-            alpha_min (): the minimum alpha degree given
-            alpha_max (): the maximum alpha degree given. The recommended value is half of camera FOV. For example, use
-                          90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
+            alpha_min: the minimum alpha degree given
+            alpha_max: the maximum alpha degree given. The recommended value is half of camera FOV. For example, use
+                        90 for a 180 degree fisheye images and use 110 for a 220 degree fisheye images.
+
 
         Returns:
             mapX: the mapping matrices X
             mapY: the mapping matrices Y
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         self.__moildev.Panorama(self.__map_x, self.__map_y, alpha_min, alpha_max)
         return self.__map_x, self.__map_y
@@ -433,8 +452,10 @@ class Moildev(object):
         Returns:
             New mapX and mapY.
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         self.__moildev.PanoramaM_Rt(self.__map_x, self.__map_y, alpha_max, iC_alpha_degree, iC_beta_degree)
         return self.__map_x, self.__map_y
@@ -456,8 +477,10 @@ class Moildev(object):
         Returns:
             New mapX and mapY.
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         self.__moildev.xPanoramaM_Rt(self.__map_x, self.__map_y, alpha_max, iC_alpha_degree,
                                      iC_beta_degree, p_alpha_from, p_alpha_end)
@@ -486,17 +509,19 @@ class Moildev(object):
         is thetaY degree rotation around the Y-axis(yaw) after thetaX degree rotation around the X-axis(pitch).
 
         Args:
-            image (): source image given
-            alpha (): the alpha offset that corespondent to the pitch rotation
-            beta (): the beta offset that corespondent to the yaw rotation
-            zoom (): decimal zoom factor, normally 1..12
-            mode (): the mode view selected
+            image: source image given
+            alpha: the alpha offset that corespondent to the pitch rotation
+            beta: the beta offset that corespondent to the yaw rotation
+            zoom: decimal zoom factor, normally 1..12
+            mode: the mode view selected
 
         Returns:
             anypoint image
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         map_x, map_y = self.maps_anypoint(alpha, beta, zoom, mode)
         image = cv2.remap(image, map_x, map_y, cv2.INTER_CUBIC)
@@ -514,8 +539,10 @@ class Moildev(object):
         Returns:
             Panorama view image
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         map_x, map_y = self.maps_panorama(alpha_min, alpha_max)
         image = cv2.remap(image, map_x, map_y, cv2.INTER_CUBIC)
@@ -537,8 +564,10 @@ class Moildev(object):
         Returns:
             reverse image
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         self.__moildev.PanoramaM_Rt(self.__map_x, self.__map_y, alpha_max, iC_alpha_degree, iC_beta_degree)
         result = cv2.remap(image, self.__map_x, self.__map_y, cv2.INTER_CUBIC)
@@ -576,6 +605,7 @@ class Moildev(object):
 
         Returns:
             alpha
+
         """
         if rho >= 0:
             return self.__rho_to_alpha_table[rho] / 10
@@ -607,8 +637,10 @@ class Moildev(object):
         Returns:
             alpha, beta
 
-        Examples:
+        .. code-block :: markdown
+
             please reference: https://github.com/MoilOrg/moildev
+
         """
         delta_x = coordinateX - self.__icx
         delta_y = -(coordinateY - self.__icy)

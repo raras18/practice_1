@@ -1,4 +1,3 @@
-PyQt5
-opencv_python==4.2.0.32
+PyQt6
+opencv_python
 pyexiv2
-json

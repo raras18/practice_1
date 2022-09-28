@@ -37,7 +37,7 @@ def check_Port_USB_Camera():
 class CameraSource(Ui_Dialog):
     def __init__(self, RecentWindow, theme="light"):
         """
-        Create class controller open camera with inheritance from Ui Dialog Class.
+        Create class controllers open camera with inheritance from Ui Dialog Class.
 
         Args:
             RecentWindow ():

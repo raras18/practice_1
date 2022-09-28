@@ -1,7 +1,7 @@
 """
 Project Name: MoilApps Templates
 Writer : Haryanto
-PROJECT MADE WITH: Qt Designer
+PROJECT MADE WITH: PyQt & Qt Designer
 Build for: MOIL-LAB
 Copyright: MOIL-2022
 
@@ -13,9 +13,9 @@ https://doc.qt.io/qtforpython/licenses.html
 
 """
 import sys
-from model import Model
-from controller import Controller
-from view import View
+from src.models.model import Model
+from src.controllers.controller import Controller
+from src.views.view import View
 
 try:
     from PyQt6.QtWidgets import QApplication, QMainWindow

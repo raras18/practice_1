@@ -27,7 +27,7 @@ def select_type_camera(theme="dark"):
 
     Args:
         theme:
-            dark
+            dark mode
     Returns:
         camera name
     """
@@ -219,7 +219,7 @@ def select_file(parent=None, title="Open file", dir_path=".", file_filter=""):
     Find the file path from the directory computer.
 
     Args:
-        parent (): The parent windows to show dialog always in front of user interface
+        parent: The parent windows to show dialog always in front of user interface
         title: the title window of open dialog
         file_filter: determine the specific file want to search
         dir_path: Navigate to specific directory
@@ -257,13 +257,13 @@ def select_directory(parent=None, title='Select Folder'):
     return directory
 
 
-def copyDirectory(src_directory, dst_directory):
+def copy_directory(src_directory, dst_directory):
     """
     This function is to Copy directory.
 
     Args:
-        src_directory (): source path or original path folder
-        dst_directory (): destination directory.
+        src_directory: source path or original path folder
+        dst_directory: destination directory.
 
     Returns:
         file copied in destination directory.
@@ -278,8 +278,8 @@ def resize_image(image, width):
     This function is for resize image original with our size we want
 
     Args:
-        image (): image original
-        width (): image width we want
+        image: image original
+        width: image width we want
 
     Returns:
         result: image has been resized
@@ -441,8 +441,8 @@ def write_camera_type(image_file, typeCamera):
     This function for Read the camera used from metadata image.
 
     Args:
-        image_file ():
-        typeCamera ():
+        image_file: image file path
+        typeCamera: the name of type camera (string)
 
     Returns:
         None
@@ -455,10 +455,10 @@ def write_camera_type(image_file, typeCamera):
 
 def read_camera_type(image_file):
     """
-    Read the camera used from metadata image.
+    Read the camera used from metadata image using pyexiv2 library.
 
     Args:
-        image_file (): load file image
+        image_file: load file image
 
     Returns:
         camera type
@@ -476,12 +476,12 @@ def read_camera_type(image_file):
 
 def draw_point(image, coordinate_point, radius=5):
     """
-    This fucntiopn is for Drawing point on the image.
+    This fucntion is for Drawing point on the image.
 
     Args:
-        image ():
-        coordinate_point ():
-        radius ():
+        image: source image
+        coordinate_point (): the coordinate point (x, y)
+        radius: the size of the point (scale by radius)
 
     Returns:
         image
@@ -496,35 +496,38 @@ def draw_point(image, coordinate_point, radius=5):
     return image
 
 
-def saveImage(image, dst_directory, type_camera):
+def save_image(image, dst_directory, type_camera=None):
     """
     This function is for saved image on application
+
     Args:
-        image ():
-        dst_directory (): destination directory
-        type_camera ():
+        image: Source image want to save.
+        dst_directory: destination directory
+        type_camera: Type camera (string)
 
     Returns:
-        ss (screenshot)
-
+        the file name (string)
     """
     ss = datetime.datetime.now().strftime("%m_%d_%H_%M_%S")
     name = dst_directory + "/" + str(ss) + ".png"
     cv2.imwrite(name, image)
-    write_camera_type(name, type_camera)
+    if type_camera is not None:
+        write_camera_type(name, type_camera)
     return ss
 
 
-def drawLine(image, coordinatePoint_1=None, coordinatePoint_2=None):
+def draw_line(image, coordinatePoint_1=None, coordinatePoint_2=None):
     """
-    This function for drawline coordinate systems image
+    Draw line on the image from the coordinate given.
+
     Args:
-        image ():load
-        coordinatePoint_1 ():Horizontal
-        coordinatePoint_2 ():Vertical
+        image: source image
+        coordinatePoint_1: coordinate point 1 (x, y)
+        coordinatePoint_2: coordinate point 2 (x, y)
 
     Returns:
-        image
+        image with line drawn
+
     """
     # draw anypoint line
     if coordinatePoint_1 is None:
@@ -561,3 +564,24 @@ def calculate_ratio_image2label(label, image):
     ratio_y = height / h
     return ratio_x, ratio_y
 
+
+def cropping_image(image, right, bottom, left, top):
+    """
+    Cropping image by ratio from every side.
+
+    Args:
+        image: Input image
+        right: ratio of right side (1-0)
+        bottom: ratio of bottom side (1-0)
+        left: ratio of left side (0-1)
+        top: ratio of top side (0-1)
+
+    Returns:
+        image has already cropping
+
+    """
+    a_right = round(image.shape[1] * right)
+    a_bottom = round(image.shape[0] * bottom)
+    a_left = round(image.shape[1] * left)
+    a_top = round(image.shape[0] * top)
+    return image[a_top:a_top + a_bottom, a_left:a_left + a_right]

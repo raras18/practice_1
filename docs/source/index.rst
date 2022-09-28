@@ -4,10 +4,10 @@
    :caption: Table of Contents:
    :maxdepth: 4
 
-   Overview
-   installation_guide
-   contribute
+   overview
+   installation
    api_reference
+   contribute
 
 Indices and tables
 ==================
