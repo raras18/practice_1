@@ -13,12 +13,39 @@ except:
     pyqt_version = "pyqt5"
 
 
+class SetImageToParams:
+    def __init__(self, main_ui):
+        super(SetImageToParams, self).__init__()
+        self.ui = main_ui
+        self.adding_pixmap()
+        self.set_icon_button()
+
+    def adding_pixmap(self):
+        self.ui.label.setPixmap(QtGui.QPixmap("icons:moil-icon.png"))
+
+    def set_icon_button(self):
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons:help-circle.svg"), QtGui.QIcon.Mode.Normal,
+                        QtGui.QIcon.State.Off)
+        self.ui.btn_help.setIcon(icon1)
+
+        icon1.addPixmap(QtGui.QPixmap("icons:light/cil-x.png"), QtGui.QIcon.Mode.Normal,
+                        QtGui.QIcon.State.Off)
+        self.ui.btn_close.setIcon(icon1)
+
+        icon1.addPixmap(QtGui.QPixmap("icons:light/cil-loop-circular.png"), QtGui.QIcon.Mode.Normal,
+                        QtGui.QIcon.State.Off)
+        self.ui.btn_synchronize.setIcon(icon1)
+
+
 class CameraParametersForm(Ui_Dialog):
     def __init__(self, recent_win, camera_parameter_path):
         super(CameraParametersForm, self).__init__()
         self.recent_win = recent_win
         self.file_parameter = camera_parameter_path
         self.setupUi(self.recent_win)
+
+        SetImageToParams(self)
 
         self.main_controller = None
         self.camera_name = None
@@ -55,16 +82,27 @@ class CameraParametersForm(Ui_Dialog):
         self.btn_save.clicked.connect(self.save_parameter_from_ui)
         self.btn_clean_all.clicked.connect(self.clean_parameter_in_ui)
         self.btn_delete.clicked.connect(self.delete_camera_parameter)
-        self.btn_synchronize.clicked.connect(self.delete_camera_parameter)
+        self.btn_synchronize.clicked.connect(self.synchronize_data)
 
     def moveWindow(self, event):
-        if event.buttons() == QtCore.Qt.MouseButton.LeftButton:
-            self.recent_win.move(self.recent_win.pos() + event.globalPosition().toPoint() - self.dragPos)
-            self.dragPos = event.globalPosition().toPoint()
-            event.accept()
+        if pyqt_version == "pyqt6":
+            if event.buttons() == QtCore.Qt.MouseButton.LeftButton:
+                self.recent_win.move(self.recent_win.pos() + event.globalPosition().toPoint() - self.dragPos)
+                self.dragPos = event.globalPosition().toPoint()
+                event.accept()
+        else:
+            if event.buttons() == QtCore.Qt.LeftButton:
+                delta = QtCore.QPoint(event.globalPos() - self.dragPos)
+                self.recent_win.move(self.recent_win.x() + delta.x(), self.recent_win.y() + delta.y())
+                # self.recent_win.move(self.recent_win.pos() + event.globalPos - self.dragPos)
+                self.dragPos = event.globalPos()
+                event.accept()
 
     def mousePressEvent(self, event):
-        self.dragPos = event.globalPosition().toPoint()
+        if pyqt_version == "pyqt6":
+            self.dragPos = event.globalPosition().toPoint()
+        else:
+            self.dragPos = event.globalPos()
 
     def update_list_camera(self):
         self.list_camera.clear()
@@ -136,10 +174,12 @@ class CameraParametersForm(Ui_Dialog):
 
     def delete_camera_parameter(self):
         camera_index = self.list_camera.currentText()
-        data = self.main_controller.camera_params.data_parameter
-        data.pop(camera_index)
+        self.data.pop(camera_index)
         self.clean_parameter_in_ui()
         self.update_list_camera()
+
+    def synchronize_data(self):
+        QtWidgets.QMessageBox.information(None, "Info!!", "Under developing !!")
 
     def clean_parameter_in_ui(self):
         self.label_camera_name.setText("")

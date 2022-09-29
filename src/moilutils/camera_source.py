@@ -1,4 +1,5 @@
 import cv2
+from .resource_icon import *
 
 
 try:
@@ -258,7 +259,8 @@ style_appearance = """
         border-left-color: rgba(39, 44, 54, 150);
         border-left-style: solid;
         border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;	
+        border-bottom-right-radius: 3px;
+        background-image: url(icons:light/cil-arrow-bottom.png);	
         background-position: center;
         background-repeat: no-reperat;
      }

@@ -62,6 +62,9 @@ html_show_sourcelink = False
 autodoc_default_flags = ['members']
 autodoc_member_order = 'bysource'
 autodoc_default_options = {
-    'undoc-members': True,}
+    'undoc-members': True,
+    "show-inheritance": True}
+
+autosummary_generate = True
 
 add_module_names = False

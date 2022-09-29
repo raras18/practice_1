@@ -1,15 +1,23 @@
 import json
+from .resource_icon import *
 
 try:
     from PyQt6 import QtWidgets, QtGui, QtCore
+
     pyqt_version = "pyqt6"
 
 except:
     print("pyqt5")
     from PyQt5 import QtWidgets, QtGui, QtCore
+
     pyqt_version = "pyqt5"
 
 type_camera = None
+
+
+def set_icon_select_camera_type(comboBox_cam_type):
+    comboBox_cam_type.setStyleSheet("QComboBox::drop-down {"
+                                    "background-image: url(icons:chevron-down.svg);}")
 
 
 def camera_type(camera_parameter, theme):
@@ -44,43 +52,43 @@ def camera_type(camera_parameter, theme):
 
     Dialog.setStyleSheet("QFrame {\n"
                          " background-color:" + color + ";\n"
-                        "color: " + color_font + ";\n"
-                        "    border-radius: 20px;\n"
-                        "    font: 12pt \"Segoe UI\";\n"
-                        "}\n"
-                        "\n"
-                        "QComboBox{\n"
-                        "    color: rgb(0, 0, 0);\n"
-                        "    background-color: rgb(255, 255, 255);\n"
-                        "    border-radius: 4px;\n"
-                        "    border: 1px solid rgb(33, 37, 43);\n"
-                        "    padding: 5px;\n"
-                        "    padding-left: 10px;\n"
-                        "}\n"
-                        "QComboBox:hover{\n"
-                        "    border: 2px solid rgb(64, 71, 88);\n"
-                        "\n"
-                        "}\n"
-                        "\n"
-                        "QComboBox::drop-down {\n"
-                        "    subcontrol-origin: padding;\n"
-                        "    subcontrol-position: top right;\n"
-                        "    width: 25px; \n"
-                        "    border-left-width: 3px;\n"
-                        "    border-left-color: rgba(39, 44, 54, 150);\n"
-                        "    border-left-style: solid;\n"
-                        "    border-top-right-radius: 3px;\n"
-                        "    border-bottom-right-radius: 3px;    \n"
-                        "    background-position: center;\n"
-                        "    background-repeat: no-reperat;\n"
-                        " }\n"
-                        "\n"
-                        "QComboBox QAbstractItemView {\n"
-                        "    color: rgb(0, 0, 0);    \n"
-                        "    background-color: rgb(255, 255, 255);\n"
-                        "    padding:5px;\n"
-                        "    selection-background-color: rgb(39, 44, 54);\n"
-                        "}")
+                                                        "color: " + color_font + ";\n"
+                                                                                 "    border-radius: 20px;\n"
+                                                                                 "    font: 12pt \"Segoe UI\";\n"
+                                                                                 "}\n"
+                                                                                 "\n"
+                                                                                 "QComboBox{\n"
+                                                                                 "    color: rgb(0, 0, 0);\n"
+                                                                                 "    background-color: rgb(255, 255, 255);\n"
+                                                                                 "    border-radius: 4px;\n"
+                                                                                 "    border: 1px solid rgb(33, 37, 43);\n"
+                                                                                 "    padding: 5px;\n"
+                                                                                 "    padding-left: 10px;\n"
+                                                                                 "}\n"
+                                                                                 "QComboBox:hover{\n"
+                                                                                 "    border: 2px solid rgb(64, 71, 88);\n"
+                                                                                 "\n"
+                                                                                 "}\n"
+                                                                                 "\n"
+                                                                                 "QComboBox::drop-down {\n"
+                                                                                 "    subcontrol-origin: padding;\n"
+                                                                                 "    subcontrol-position: top right;\n"
+                                                                                 "    width: 25px; \n"
+                                                                                 "    border-left-width: 3px;\n"
+                                                                                 "    border-left-color: rgba(39, 44, 54, 150);\n"
+                                                                                 "    border-left-style: solid;\n"
+                                                                                 "    border-top-right-radius: 3px;\n"
+                                                                                 "    border-bottom-right-radius: 3px;    \n"
+                                                                                 "    background-position: center;\n"
+                                                                                 "    background-repeat: no-reperat;\n"
+                                                                                 " }\n"
+                                                                                 "\n"
+                                                                                 "QComboBox QAbstractItemView {\n"
+                                                                                 "    color: rgb(0, 0, 0);    \n"
+                                                                                 "    background-color: rgb(255, 255, 255);\n"
+                                                                                 "    padding:5px;\n"
+                                                                                 "    selection-background-color: rgb(39, 44, 54);\n"
+                                                                                 "}")
     verticalLayout = QtWidgets.QVBoxLayout(Dialog)
     verticalLayout.setObjectName("verticalLayout")
     frame_main = QtWidgets.QFrame(Dialog)
@@ -109,7 +117,7 @@ def camera_type(camera_parameter, theme):
     comboBox_cam_type = QtWidgets.QComboBox(frame_main)
     comboBox_cam_type.setMinimumSize(QtCore.QSize(0, 30))
     comboBox_cam_type.addItems(new_list)
-    # set_icon_select_camera_type(comboBox_cam_type)
+    set_icon_select_camera_type(comboBox_cam_type)
     comboBox_cam_type.setObjectName("comboBox_cam_type")
     verticalLayout_2.addWidget(comboBox_cam_type)
     spacerItem = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Policy.Minimum,

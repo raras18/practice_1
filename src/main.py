@@ -27,6 +27,9 @@ except:
 
 
 class App:
+    """
+    Class of app
+    """
     def __init__(self, parent):
         self.model = Model()
         self.main_ctrl = Controller(self.model)

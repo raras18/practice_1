@@ -1,4 +1,4 @@
-.. include:: README.rst
+
 
 .. toctree::
    :caption: Table of Contents:
@@ -8,10 +8,3 @@
    installation
    api_reference
    contribute
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
