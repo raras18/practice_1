@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial &mdash; moilapps-template 2022 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="API Reference" href="api_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> moilapps-template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Definition and overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#use-function-provided">Use Function Provided</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-user-interface">Design User Interface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moilapps-template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Follow these steps carefully so you can understand how to contribute using moilUtils.</p>
+</div>
+<section id="use-function-provided">
+<h2>Use Function Provided<a class="headerlink" href="#use-function-provided" title="Permalink to this heading"></a></h2>
+<p>&gt;&gt; from moilutils import mutils</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">The set of functions can be seen in the following table:</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>select_type_camera()</p></td>
+<td><p>type_camera = mutils.select_type_camera()</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>select_source_camera()</p></td>
+<td><p>source_camera = mutils.select_source_camera()</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>form_camera_parameter()</p></td>
+<td><p>source_camera = mutils.form_camera_parameter()</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>show_image_to_label()</p></td>
+<td><p>mutils.show_image_to_label(self.label, src, 800)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>connect_to_moildev()</p></td>
+<td><p>moildev = mutils.connect_to_moildev(type_camera= camera_type)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>check_usb_camera_available()</p></td>
+<td><p>usb_camera = mutils.check_usb_camera_available()</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>read_image()</p></td>
+<td><p>src = mutils.read_image(“../docs/source/assets/colon_phantom.png”)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>remap_image()</p></td>
+<td><p>anypoint = mutils.remap_image(image, mapx, mapy)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>draw_polygon()</p></td>
+<td><p>image = mutils.draw_polygon(image, mapX, mapY)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>select_file()</p></td>
+<td><p>image = mutils.select_file(“Select file”, “./docs/source/assets/colon_phantom.png”)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>select_directory()</p></td>
+<td><p>image = mutils.select_directory(None, “Select directory”)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>copyDirectory()</p></td>
+<td><p>mutils.copy_directory(src, dst)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>resize_image()</p></td>
+<td><p>image = mutils.resize_image(src, 400)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotate_image()</p></td>
+<td><p>rotate_image = mutils.rotate_image(image, 90)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>calculate_height()</p></td>
+<td><p>image_h = mutils.calculate_height(src, 400)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>write_camera_type()</p></td>
+<td><p>image = mutils.write_camera_type(“../docs/source/assets/colon_phantom.png”, “raspi”)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>read_camera_type()</p></td>
+<td><p>camera_type = mutils.read_camera_type(“../docs/source/assets/colon_phantom.png”)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>draw_point()</p></td>
+<td><p>image = mutils.draw_point(image1, (100, 100), 5)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>saveImage()</p></td>
+<td><p>image = mutils.save_image(image, “../docs/source/assets/colon_phantom.png”)</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-odd"><td><p>drawLine()</p></td>
+<td><p>draw_line = mutils.draw_line(image1, (200, 200))</p></td>
+<td><p>Ready</p></td>
+</tr>
+<tr class="row-even"><td><p>calculate_ratio_image2label()</p></td>
+<td><p>ratio_x, ratio_y = mutils.calculate_ratio_image2label(label, image)</p></td>
+<td><p>Ready</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-important admonition">
+<p class="admonition-title">Important!</p>
+<p>MoilUtils provides several functions that can be used for implementation in the current Omnidirectional Imaging Laboratory application development, as below:</p>
+</div>
+<ol class="arabic simple">
+<li><p>select_type_camera()</p></li>
+</ol>
+<p>Each image and video have different parameters depending on the camera used. This function allows a user to choose what parameter will be used. this function will open a dialog and you can select the parameter available from Combobox. for example:</p>
+<p>&gt;&gt; type_camera = mutils.select_type_camera()</p>
+<p>The dialog will be shown like the picture below. Just select oke after you choose the name of the parameter.</p>
+<a class="reference internal image-reference" href="_images/16.png"><img alt="alternate text" class="align-center" src="_images/16.png" style="width: 282.0px; height: 136.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>select_source_camera()</p></li>
+</ol>
+<p>Open dialog to select the camera source. the available source camera from this dialog is a USB camera and a streaming camera. To get the camera source from this dialog, you can use the command line shown below:</p>
+<p>&gt;&gt; cameraSource = mutils.select_source_camera()</p>
+<a class="reference internal image-reference" href="_images/14.png"><img alt="alternate text" class="align-center" src="_images/14.png" style="width: 352.0px; height: 147.20000000000002px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>form_camera_parameter()</p></li>
+</ol>
+<p>Open camera parameters from to view detailed parameters of each camera. you just need to use it very easily by calling the function like the example below:</p>
+<p>&gt;&gt; params = mutils.form_camera_parameter()</p>
+<p>The result of this function is shown like picture bellow this:</p>
+<a class="reference internal image-reference" href="_images/15.png"><img alt="alternate text" class="align-center" src="_images/15.png" style="width: 363.20000000000005px; height: 361.6px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="design-user-interface">
+<h2>Design User Interface<a class="headerlink" href="#design-user-interface" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Open the user interface</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/10.png"><img alt="alternate text" class="align-center" src="_images/10.png" style="width: 554.6999999999999px; height: 316.8px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Editing the user interface like you want</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/5.png"><img alt="alternate text" class="align-center" src="_images/5.png" style="width: 554.4px; height: 315.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Save the user interface</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/6.png"><img alt="alternate text" class="align-center" src="_images/6.png" style="width: 545.5px; height: 127.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Running the program</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/7.png"><img alt="alternate text" class="align-center" src="_images/7.png" style="width: 584.15px; height: 364.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Connect some function like showing camera parameter using moilutils-template</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/8.png"><img alt="alternate text" class="align-center" src="_images/8.png" style="width: 586.25px; height: 365.4px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Connect some function like showing select directory in computer using moilutils-template</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/9.png"><img alt="alternate text" class="align-center" src="_images/9.png" style="width: 584.8499999999999px; height: 365.75px;" /></a>
+<ol class="arabic simple" start="6">
+<li><p>The program showing original image and remap image (anypoint)</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/23.png"><img alt="alternate text" class="align-center" src="_images/23.png" style="width: 585.9px; height: 366.09999999999997px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, moil-lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

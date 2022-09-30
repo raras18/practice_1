@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Definition and overview &mdash; moilapps-template 2022 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation Guide" href="installation.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> moilapps-template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Definition and overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-moilapps-template">What is MoilApps-Template?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyqt5">PyQt5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyqt6">PyQt6</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Tutorial</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">moilapps-template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Definition and overview</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="definition-and-overview">
+<h1>Definition and overview<a class="headerlink" href="#definition-and-overview" title="Permalink to this heading"></a></h1>
+<div class="admonition-important admonition">
+<p class="admonition-title">Important!</p>
+<p>API (Application Programming Interface) is a logical interface to a software component that hides the internal details needed to implement it.</p>
+</div>
+<p>API also allows two applications can talk to each other. Some advantages of using API are increasing productivity, high efficiency, ease to understand, and reduced development time. The main reason for making this API is distributed development and modularized application. The main design for this API is shown in the image below:</p>
+<section id="what-is-moilapps-template">
+<h2>What is MoilApps-Template?<a class="headerlink" href="#what-is-moilapps-template" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="_images/11.png"><img alt="alternate text" class="align-center" src="_images/11.png" style="width: 408.0px; height: 291.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>From the picture above, in addition to speeding up development time and facilitating the apps development process, the API also allows it to be a bridge in connecting the apps created with MOIL-APP.
+Moil API is a collection of several modules that contain functions to simplify apps development. The moil API we are developing is called MoilUtils. This API was developed with the aim of developing user interface-based apps using PyQt and the python programming language.</p>
+<p>Besides being used for making MoilApp apps plugins, this API can also be used to develop apps independently. The source code can download on the following “git clone <a class="reference external" href="https://github.com/MoilOrg/moilapps-template.git">https://github.com/MoilOrg/moilapps-template.git</a>”
+After you download the source code of API, you can move the file to your working directory, don’t forget you have to install it and activate the virtual environment according to the requirements. the file structure will look like the image below:</p>
+<a class="reference internal image-reference" href="_images/12.png"><img alt="alternate text" class="align-center" src="_images/12.png" style="width: 481.0px; height: 316.55px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The Moil API currently has several main modules, namely Moilutils.
+MoilUtils is a module that contains basic functions to build an application, there are approximately 20 functions that you can use to make it easier for you to develop applications. The first thing you have to do is import this module, you can see the example below:</p>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h2>
+<div class="admonition-important admonition">
+<p class="admonition-title">Important!</p>
+<p>Each Every installation needs to pay attention to the python version used. Installation requirements support pyQt5 and pyQt6 from python 3.7 - 3.8 but use different opencv like pyQt5 opencv_python==4.2.0.32 while pyQt6 is the latest version of opencv-python.
+Some unit tests have a dependency on python-tz. This dependency is optional: the associated test will be skipped if it does not exist on the system.</p>
+</div>
+<section id="pyqt5">
+<h3>PyQt5<a class="headerlink" href="#pyqt5" title="Permalink to this heading"></a></h3>
+<p>PyQt5 is a third-party function library for Python. It is a function library used by Python to design user interface (GUI). If you want to design a more beautiful interface, or the code is easier to understand, PyQt5 is often used instead of built-in Python. The implementation of Tkinter, this tutorial will introduce how to install the PyQt5 library, as well as the basic introduction of PyQt5.
+Qt itself is a function library of C++, while PyQt is a branch of Qt. It mainly uses Python and Qt for interface design and development. In addition to using Python syntax, PyQt also retains the powerful functions of Qt. Most of them are developed using Python. The functions that come out can be matched with PyQt.
+PyQt5 is the version of PyQt. In addition to simply writing the interface through code, it can also use Qt Designer’s visual drawing graphics editing tool to design the interface, and then convert the interface into Python code and concatenate the program logic, which greatly reduces the interface design. threshold .</p>
+</section>
+<section id="pyqt6">
+<h3>PyQt6<a class="headerlink" href="#pyqt6" title="Permalink to this heading"></a></h3>
+<p>Upgrading from pyqt5 to pyqt6 is fairly straightforward, but there are some caveats. For some programs, just renaming import pyqt5 to pyqt 6 is enough to get the program running with the new version. But in most cases, you still need to consider changes in pyqt and qt itself.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, moil-lab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

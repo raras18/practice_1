@@ -42,7 +42,6 @@ class CameraParametersForm(Ui_Dialog):
     def __init__(self, recent_win, camera_parameter_path):
         super(CameraParametersForm, self).__init__()
         self.recent_win = recent_win
-        self.file_parameter = camera_parameter_path
         self.setupUi(self.recent_win)
 
         SetImageToParams(self)
@@ -65,7 +64,7 @@ class CameraParametersForm(Ui_Dialog):
         self.parameter_4 = None
         self.parameter_5 = None
 
-        with open(self.file_parameter) as f:
+        with open(camera_parameter_path) as f:
             self.data = json.load(f)
 
         self.centralwidget.setStyleSheet(style_appearance)

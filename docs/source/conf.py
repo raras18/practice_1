@@ -56,7 +56,7 @@ html_static_path = []
 master_doc = 'index'
 
 autoclass_content = 'both'
-autodoc_mock_imports = ["Moildev", "PyQt6", "cv2", "numpy", "pyexiv2"]
+autodoc_mock_imports = ["Moildev", "PyQt6", "PyQt5", "cv2", "numpy", "pyexiv2", "src"]
 html_show_sourcelink = False
 
 autodoc_default_flags = ['members']
