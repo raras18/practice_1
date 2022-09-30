@@ -68,3 +68,11 @@ autodoc_default_options = {
 autosummary_generate = True
 
 add_module_names = False
+
+html_context = {
+    "display_github": True, # Integrate GitHub
+    "github_user": "MoilOrg", # Username
+    "github_repo": "moilapps-template", # Repo name
+    "github_version": "main", # Version
+    "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
+}
