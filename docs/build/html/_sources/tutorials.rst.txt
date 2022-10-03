@@ -1,9 +1,33 @@
 Tutorials
-=========
+#########
 
-Bellow is the tutorial that you can follow in order to create an application based on moilapps-template
 
-1.
+Create user interface
+=======================
+
+coming soon
+
+|
+
+Convert file .ui to .py
+=======================
+
+coming soon
+
+|
+
+Developing using pycharm IDE
+============================
+
+coming soon
+
+|
+
+
+
+
+
+
 
 
 

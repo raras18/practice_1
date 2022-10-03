@@ -43,8 +43,8 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#moilutils-package">Moilutils package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-moilutils.Moildev.Moildev">Moildev package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-models.model">MVC module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moildev-package">Moildev package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mvc-module">MVC module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
@@ -79,7 +79,14 @@
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading"></a></h1>
 <section id="moilutils-package">
 <span id="id1"></span><h2>Moilutils package<a class="headerlink" href="#moilutils-package" title="Permalink to this heading"></a></h2>
-<p>Moilutils is a package that containing several modules that has utilization f</p>
+<p>Moilutils is a package that containing several modules that has utilization functions for helping to simplify the
+process of developing apps. bellow is the function name:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/moilutils.png"><img alt="Moilutils function" src="_images/moilutils.png" style="width: 692.1px; height: 424.8px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <span class="target" id="module-moilutils.moilutils"></span><dl class="py function">
 <dt class="sig sig-object py" id="moilutils.moilutils.select_type_camera">
 <span class="sig-name descname"><span class="pre">select_type_camera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dark'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/moilutils.html#select_type_camera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.moilutils.select_type_camera" title="Permalink to this definition"></a></dt>
@@ -506,9 +513,17 @@ center : find the center image on window user interface.</p>
 </dd></dl>
 
 </section>
-<section id="module-moilutils.Moildev.Moildev">
-<span id="moildev-package"></span><h2>Moildev package<a class="headerlink" href="#module-moilutils.Moildev.Moildev" title="Permalink to this heading"></a></h2>
-<dl class="py class">
+<section id="moildev-package">
+<h2>Moildev package<a class="headerlink" href="#moildev-package" title="Permalink to this heading"></a></h2>
+<p>Moildev Library is a collection of functions to developments fisheye image applications.
+Initially, this library is written for C++ programing language. In the recent decade, python is
+a programming language that is very popular for developers. That is the reason why we are developing
+the Moildev library for python.</p>
+<a class="reference internal image-reference" href="_images/moildev.png"><img alt="alternate text" class="align-center" src="_images/moildev.png" style="width: 628.2px; height: 432.90000000000003px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span class="target" id="module-moilutils.Moildev.Moildev"></span><dl class="py class">
 <dt class="sig sig-object py" id="moilutils.Moildev.Moildev.Moildev">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Moildev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_camera_parameter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/moilutils/Moildev/Moildev.html#Moildev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#moilutils.Moildev.Moildev.Moildev" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -896,9 +911,16 @@ the speed of the computation processing more than 30%</p>
 </dd></dl>
 
 </section>
-<section id="module-models.model">
-<span id="mvc-module"></span><h2>MVC module<a class="headerlink" href="#module-models.model" title="Permalink to this heading"></a></h2>
-<dl class="py class">
+<section id="mvc-module">
+<h2>MVC module<a class="headerlink" href="#mvc-module" title="Permalink to this heading"></a></h2>
+<p>Model–view–controller (MVC) is a software architectural pattern[1] commonly used for developing user interfaces that
+divide the related program logic into three interconnected elements. This is done to separate internal representations
+of information from the ways information is presented to and accepted by the user.</p>
+<a class="reference internal image-reference" href="_images/mvc.png"><img alt="alternate text" class="align-center" src="_images/mvc.png" style="width: 369.90000000000003px; height: 234.9px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span class="target" id="module-models.model"></span><dl class="py class">
 <dt class="sig sig-object py" id="models.model.Model">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Model</span></span><a class="reference internal" href="_modules/models/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.model.Model" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -918,6 +940,20 @@ API, or a JSON object, the model is responsible for managing it.</p>
 
 </dd></dl>
 
+<span class="target" id="module-controllers.controller"></span><dl class="py class">
+<dt class="sig sig-object py" id="controllers.controller.Controller">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Controller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/controller.html#Controller"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.controller.Controller" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The controllers class is The brains of the application that controls how data is displayed.
+The controller’s responsibility is to pull, modify, and provide data to the user.
+Essentially, the controllers is the link between the view and model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> – The backend that contains all the data logic</p>
+</dd>
+</dl>
+</dd></dl>
+
 <span class="target" id="module-views.view"></span><dl class="py class">
 <dt class="sig sig-object py" id="views.view.View">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">View</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/views/view.html#View"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#views.view.View" title="Permalink to this definition"></a></dt>
@@ -930,20 +966,6 @@ The view’s job is to decide what the user will see on their screen, and how.</
 <li><p><strong>model</strong> – The backend that contains all the data logic</p></li>
 <li><p><strong>controller</strong> – The brains of the application that controls how data is displayed</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-<span class="target" id="module-controllers.controller"></span><dl class="py class">
-<dt class="sig sig-object py" id="controllers.controller.Controller">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Controller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/controllers/controller.html#Controller"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#controllers.controller.Controller" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The controllers class is The brains of the application that controls how data is displayed.
-The controller’s responsibility is to pull, modify, and provide data to the user.
-Essentially, the controllers is the link between the view and model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>model</strong> – The backend that contains all the data logic</p>
 </dd>
 </dl>
 </dd></dl>
