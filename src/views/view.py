@@ -17,5 +17,3 @@ class View(Ui_MainWindow):
         self.model = model
         self.setupUi(parent)
 
-        mutils.form_camera_parameter()
-
