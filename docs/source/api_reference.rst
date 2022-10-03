@@ -1,8 +1,12 @@
 API Reference
 #############
 
+.. _moilutils_package:
+
 Moilutils package
-=================
+==================
+
+Moilutils is a package that containing several modules that has utilization f
 
 .. automodule:: moilutils.moilutils
    :members:

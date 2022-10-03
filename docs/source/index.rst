@@ -7,7 +7,7 @@ Welcome to Moilapps-template Documentation
    :caption: Table of Contents:
    :maxdepth: 4
 
-   overview
-   installation
+   getting_started
    api_reference
-   contribute
+   tutorials
+   issues

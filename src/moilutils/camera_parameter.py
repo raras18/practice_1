@@ -13,9 +13,9 @@ except:
     pyqt_version = "pyqt5"
 
 
-class SetImageToParams:
+class SetIconToFormParams:
     def __init__(self, main_ui):
-        super(SetImageToParams, self).__init__()
+        super(SetIconToFormParams, self).__init__()
         self.ui = main_ui
         self.adding_pixmap()
         self.set_icon_button()
@@ -44,7 +44,9 @@ class CameraParametersForm(Ui_Dialog):
         self.recent_win = recent_win
         self.setupUi(self.recent_win)
 
-        SetImageToParams(self)
+        SetIconToFormParams(self)
+
+        self.parameter_path = camera_parameter_path
 
         self.main_controller = None
         self.camera_name = None
@@ -64,14 +66,14 @@ class CameraParametersForm(Ui_Dialog):
         self.parameter_4 = None
         self.parameter_5 = None
 
-        with open(camera_parameter_path) as f:
-            self.data = json.load(f)
-
         self.centralwidget.setStyleSheet(style_appearance)
         self.recent_win.setWindowFlag(QtCore.Qt.WindowType.FramelessWindowHint)
         self.recent_win.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
 
+        with open(self.parameter_path) as f:
+            self.data = json.load(f)
         self.update_list_camera()
+        self.handle_combo_box()
 
         self.frame.mouseMoveEvent = self.moveWindow
         self.frame.mousePressEvent = self.mousePressEvent
@@ -82,6 +84,7 @@ class CameraParametersForm(Ui_Dialog):
         self.btn_clean_all.clicked.connect(self.clean_parameter_in_ui)
         self.btn_delete.clicked.connect(self.delete_camera_parameter)
         self.btn_synchronize.clicked.connect(self.synchronize_data)
+        self.btn_help.clicked.connect(self.open_help)
 
     def moveWindow(self, event):
         if pyqt_version == "pyqt6":
@@ -93,7 +96,6 @@ class CameraParametersForm(Ui_Dialog):
             if event.buttons() == QtCore.Qt.LeftButton:
                 delta = QtCore.QPoint(event.globalPos() - self.dragPos)
                 self.recent_win.move(self.recent_win.x() + delta.x(), self.recent_win.y() + delta.y())
-                # self.recent_win.move(self.recent_win.pos() + event.globalPos - self.dragPos)
                 self.dragPos = event.globalPos()
                 event.accept()
 
@@ -104,34 +106,36 @@ class CameraParametersForm(Ui_Dialog):
             self.dragPos = event.globalPos()
 
     def update_list_camera(self):
+        self.list_camera.blockSignals(True)
         self.list_camera.clear()
         parameter_list = []
         for key in self.data.keys():
             parameter_list.append(key)
         self.list_camera.addItems(parameter_list)
-        self.handle_combo_box()
+        self.list_camera.blockSignals(False)
 
     def handle_combo_box(self):
-        camera_index = self.list_camera.currentText()
-        key = list(self.data[camera_index])
-        if camera_index:
-            self.camera_name = self.data[camera_index][key[0]]
-            self.camera_fov = self.data[camera_index][key[1]]
-            self.sensor_width = self.data[camera_index][key[2]]
-            self.sensor_height = self.data[camera_index][key[3]]
-            self.icx = self.data[camera_index][key[4]]
-            self.icy = self.data[camera_index][key[5]]
-            self.ratio = self.data[camera_index][key[6]]
-            self.image_width = self.data[camera_index][key[7]]
-            self.image_height = self.data[camera_index][key[8]]
-            self.calibration_ratio = self.data[camera_index][key[9]]
-            self.parameter_0 = self.data[camera_index][key[10]]
-            self.parameter_1 = self.data[camera_index][key[11]]
-            self.parameter_2 = self.data[camera_index][key[12]]
-            self.parameter_3 = self.data[camera_index][key[13]]
-            self.parameter_4 = self.data[camera_index][key[14]]
-            self.parameter_5 = self.data[camera_index][key[15]]
-            self.fill_the_properties_camera()
+        if self.list_camera.count() != 0:
+            camera_name = self.list_camera.currentText()
+            key = list(self.data[camera_name])
+            if camera_name in self.data.keys():
+                self.camera_name = self.data[camera_name][key[0]]
+                self.camera_fov = self.data[camera_name][key[1]]
+                self.sensor_width = self.data[camera_name][key[2]]
+                self.sensor_height = self.data[camera_name][key[3]]
+                self.icx = self.data[camera_name][key[4]]
+                self.icy = self.data[camera_name][key[5]]
+                self.ratio = self.data[camera_name][key[6]]
+                self.image_width = self.data[camera_name][key[7]]
+                self.image_height = self.data[camera_name][key[8]]
+                self.calibration_ratio = self.data[camera_name][key[9]]
+                self.parameter_0 = self.data[camera_name][key[10]]
+                self.parameter_1 = self.data[camera_name][key[11]]
+                self.parameter_2 = self.data[camera_name][key[12]]
+                self.parameter_3 = self.data[camera_name][key[13]]
+                self.parameter_4 = self.data[camera_name][key[14]]
+                self.parameter_5 = self.data[camera_name][key[15]]
+                self.fill_the_properties_camera()
 
     def fill_the_properties_camera(self):
         self.label_camera_name.setText(self.camera_name)
@@ -151,34 +155,78 @@ class CameraParametersForm(Ui_Dialog):
         self.label_parameter4.setText(str(self.parameter_4))
         self.label_parameter5.setText(str(self.parameter_5))
 
+    def add_new_parameter_from_file(self):
+        parameter_path = self.select_file(None, "Select Parameter !", "../", "Parameter Files (*.json)")
+        if parameter_path:
+            with open(parameter_path) as f:
+                camera = json.load(f)
+            self.label_camera_name.setText(camera["cameraName"])
+            self.label_camera_fov.setText(str(""))
+            self.label_cam_sensor_width.setText(str(camera["cameraSensorWidth"]))
+            self.label_cam_sensor_height.setText(str(camera["cameraSensorHeight"]))
+            self.label_image_center_X.setText(str(camera["iCx"]))
+            self.label_image_center_Y.setText(str(camera["iCy"]))
+            self.label_ratio.setText(str(camera["ratio"]))
+            self.label_image_width.setText(str(camera["imageWidth"]))
+            self.label_image_height.setText(str(camera["imageHeight"]))
+            self.label_calib_ratio.setText(str(camera["calibrationRatio"]))
+            self.label_parameter0.setText(str(camera["parameter0"]))
+            self.label_parameter1.setText(str(camera["parameter1"]))
+            self.label_parameter2.setText(str(camera["parameter2"]))
+            self.label_parameter3.setText(str(camera["parameter3"]))
+            self.label_parameter4.setText(str(camera["parameter4"]))
+            self.label_parameter5.setText(str(camera["parameter5"]))
+            camera_name = str(camera["cameraName"])
+            self.data[camera_name] = {}
+            self.update_list_camera()
+            self.list_camera.blockSignals(True)
+            self.list_camera.setCurrentText(camera_name)
+            self.list_camera.blockSignals(False)
+            self.save_parameter_from_ui()
+
     def save_parameter_from_ui(self):
-        camera_index = self.list_camera.currentText()
-        self.data[camera_index][0] = self.label_camera_name.text()
-        self.data[camera_index][1] = int(self.label_camera_fov.text()) if self.label_camera_fov.text() != "" else 220
-        self.data[camera_index][2] = float(self.label_cam_sensor_width.text())
-        self.data[camera_index][3] = float(self.label_cam_sensor_height.text())
-        self.data[camera_index][4] = int(self.label_image_center_X.text())
-        self.data[camera_index][5] = int(self.label_image_center_Y.text())
-        self.data[camera_index][6] = float(self.label_ratio.text())
-        self.data[camera_index][7] = int(self.label_image_width.text())
-        self.data[camera_index][8] = int(self.label_image_height.text())
-        self.data[camera_index][9] = float(self.label_calib_ratio.text())
-        self.data[camera_index][10] = float(self.label_parameter0.text())
-        self.data[camera_index][11] = float(self.label_parameter1.text())
-        self.data[camera_index][12] = float(self.label_parameter2.text())
-        self.data[camera_index][13] = float(self.label_parameter3.text())
-        self.data[camera_index][14] = float(self.label_parameter4.text())
-        self.data[camera_index][15] = float(self.label_parameter5.text())
-        self.main_controller.camera_params.save_changes_data_parameter(self.data)
+        camera_name = self.list_camera.currentText()
+        if self.label_camera_name.text() != "":
+            if self.label_camera_name.text() != camera_name:
+                camera_name = self.label_camera_name.text()
+                self.data[self.label_camera_name.text()] = {}
+            self.data[camera_name]["cameraName"] = self.label_camera_name.text()
+            self.data[camera_name]["cameraFov"] = int(self.label_camera_fov.text()) \
+                if self.label_camera_fov.text() != "" else 220
+            self.data[camera_name]["cameraSensorWidth"] = float(self.label_cam_sensor_width.text())
+            self.data[camera_name]["cameraSensorHeight"] = float(self.label_cam_sensor_height.text())
+            self.data[camera_name]["iCx"] = int(self.label_image_center_X.text())
+            self.data[camera_name]["iCy"] = int(self.label_image_center_Y.text())
+            self.data[camera_name]["ratio"] = float(self.label_ratio.text())
+            self.data[camera_name]["imageWidth"] = int(self.label_image_width.text())
+            self.data[camera_name]["imageHeight"] = int(self.label_image_height.text())
+            self.data[camera_name]["calibrationRatio"] = float(self.label_calib_ratio.text())
+            self.data[camera_name]["parameter0"] = float(self.label_parameter0.text())
+            self.data[camera_name]["parameter1"] = float(self.label_parameter1.text())
+            self.data[camera_name]["parameter2"] = float(self.label_parameter2.text())
+            self.data[camera_name]["parameter3"] = float(self.label_parameter3.text())
+            self.data[camera_name]["parameter4"] = float(self.label_parameter4.text())
+            self.data[camera_name]["parameter5"] = float(self.label_parameter5.text())
+            self.update_list_camera()
+            self.list_camera.setCurrentText(camera_name)
+            with open(self.parameter_path, 'w') as f:
+                json.dump(self.data, f)
 
     def delete_camera_parameter(self):
-        camera_index = self.list_camera.currentText()
-        self.data.pop(camera_index)
+        camera_name = self.list_camera.currentText()
+        self.data.pop(camera_name)
         self.clean_parameter_in_ui()
+        with open(self.parameter_path, 'w') as f:
+            json.dump(self.data, f)
         self.update_list_camera()
 
     def synchronize_data(self):
         QtWidgets.QMessageBox.information(None, "Info!!", "Under developing !!")
+
+    def open_help(self):
+        QtWidgets.QMessageBox.information(None, "Information !!", "Camera Parameter form, you can add from files, \n"
+                                                                  "or can you can typing the parameter information \n"
+                                                                  "the form !!! ")
 
     def clean_parameter_in_ui(self):
         self.label_camera_name.setText("")
@@ -222,33 +270,6 @@ class CameraParametersForm(Ui_Dialog):
                                                                  file_filter,
                                                                  options=options)
         return file_path
-
-    def add_new_parameter_from_file(self):
-        parameter_path = self.select_file(None, "Select Parameter !", "../", "Parameter Files (*.json)")
-        if parameter_path:
-            with open(parameter_path) as f:
-                camera = json.load(f)
-            camera_name = str(camera["cameraName"])
-            self.data[camera_name] = [None] * 16
-            self.data[camera_name][0] = camera["cameraName"]
-            self.data[camera_name][1] = ""
-            self.data[camera_name][2] = camera["cameraSensorWidth"]
-            self.data[camera_name][3] = camera["cameraSensorHeight"]
-            self.data[camera_name][4] = camera["iCx"]
-            self.data[camera_name][5] = camera["iCy"]
-            self.data[camera_name][6] = camera["ratio"]
-            self.data[camera_name][7] = camera["imageWidth"]
-            self.data[camera_name][8] = camera["imageHeight"]
-            self.data[camera_name][9] = camera["calibrationRatio"]
-            self.data[camera_name][10] = camera["parameter0"]
-            self.data[camera_name][11] = camera["parameter1"]
-            self.data[camera_name][12] = camera["parameter2"]
-            self.data[camera_name][13] = camera["parameter3"]
-            self.data[camera_name][14] = camera["parameter4"]
-            self.data[camera_name][15] = camera["parameter5"]
-            self.update_list_camera()
-            self.list_camera.setCurrentText(camera_name)
-            self.handle_combo_box()
 
 style_appearance = """
     QWidget {

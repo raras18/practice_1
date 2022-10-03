@@ -24,5 +24,4 @@ except:
 
 
 CURRENT_DIRECTORY = os.path.abspath(os.getcwd())
-QDir.addSearchPath("icons", CURRENT_DIRECTORY + "/views/icons")
-print(CURRENT_DIRECTORY + "/icons/")
+QDir.addSearchPath("icons", CURRENT_DIRECTORY + "/moilutils/icons")

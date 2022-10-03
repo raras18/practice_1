@@ -3,11 +3,9 @@ from .resource_icon import *
 
 try:
     from PyQt6 import QtWidgets, QtGui, QtCore
-
     pyqt_version = "pyqt6"
 
 except:
-    print("pyqt5")
     from PyQt5 import QtWidgets, QtGui, QtCore
 
     pyqt_version = "pyqt5"
