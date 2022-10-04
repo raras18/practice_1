@@ -2,7 +2,7 @@ import math
 import json
 import cv2
 import numpy as np
-from src.moilutils.Moildev import MoilCV
+from . import MoilCV
 import warnings
 
 
