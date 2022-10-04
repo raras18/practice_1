@@ -4,6 +4,8 @@ Getting Started
 .. admonition:: seealso!
 
     You can see "**Moilutils Package**" reference `Here <https://moilorg.github.io/moilutils/build/html/api_references.html>`_
+
+
 Welcome to Moilapps-template
 ============================
 Moilapps-template is a framework created to facilitate application development based on the Moildev SDK developed in MOIL-lab.
