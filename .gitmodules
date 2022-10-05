@@ -1,0 +1,3 @@
+[submodule "src/models/moilutils"]
+	path = src/models/moilutils
+	url = https://github.com/MoilOrg/moilutils.git
