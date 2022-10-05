@@ -13,7 +13,6 @@ https://doc.qt.io/qtforpython/licenses.html
 
 """
 import sys
-from src.models.model import Model
 from src.controllers.controller import Controller
 
 try:
@@ -30,8 +29,7 @@ class App:
     Class of app
     """
     def __init__(self, parent):
-        self.model = Model()
-        self.main_ctrl = Controller(parent, self.model)
+        self.main_ctrl = Controller(parent)
 
 
 if __name__ == "__main__":
