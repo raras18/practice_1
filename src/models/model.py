@@ -1,6 +1,7 @@
+from .moilutils import mutils
 
 
-class Model:
+class Model(object):
     def __init__(self):
         """
         The backend that contains all the data logic.
@@ -9,14 +10,5 @@ class Model:
 
         """
         super(Model, self).__init__()
-        self.__parameter_path = "camera_parameter/camera_parameters.json"
 
-    @property
-    def parameter_path(self):
-        """
-        This function is to get image original from instruction controllers mvc model
 
-        Returns:
-            parameter_path = load image
-        """
-        return self.__parameter_path

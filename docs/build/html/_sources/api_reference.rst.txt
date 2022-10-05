@@ -25,14 +25,20 @@ of information from the ways information is presented to and accepted by the use
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: views.view
-   :members:
-   :undoc-members:
-   :show-inheritance:
+|
 
 .. automodule:: controllers.controller
    :members:
    :undoc-members:
    :show-inheritance:
+
+|
+
+.. automodule:: views.ui_template
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+|
 
 

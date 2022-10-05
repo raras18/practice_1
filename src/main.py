@@ -15,7 +15,6 @@ https://doc.qt.io/qtforpython/licenses.html
 import sys
 from src.models.model import Model
 from src.controllers.controller import Controller
-from src.views.view import View
 
 try:
     from PyQt6.QtWidgets import QApplication, QMainWindow
@@ -32,8 +31,7 @@ class App:
     """
     def __init__(self, parent):
         self.model = Model()
-        self.main_ctrl = Controller(self.model)
-        self.main_view = View(parent, self.model, self.main_ctrl)
+        self.main_ctrl = Controller(parent, self.model)
 
 
 if __name__ == "__main__":

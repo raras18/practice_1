@@ -69,11 +69,11 @@
              
   <h1>Source code for controllers.controller</h1><div class="highlight"><pre>
 <span></span><span class="c1"># import necessary library you used here</span>
-<span class="c1"># from src.moilutils import mutils</span>
+<span class="kn">from</span> <span class="nn">src.views.ui_template</span> <span class="kn">import</span> <span class="n">Ui_MainWindow</span>
 
 
-<div class="viewcode-block" id="Controller"><a class="viewcode-back" href="../../api_reference.html#controllers.controller.Controller">[docs]</a><span class="k">class</span> <span class="nc">Controller</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<div class="viewcode-block" id="Controller"><a class="viewcode-back" href="../../api_reference.html#controllers.controller.Controller">[docs]</a><span class="k">class</span> <span class="nc">Controller</span><span class="p">(</span><span class="n">Ui_MainWindow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The controllers class is The brains of the application that controls how data is displayed.</span>
 <span class="sd">        The controller&#39;s responsibility is to pull, modify, and provide data to the user.</span>
@@ -83,6 +83,7 @@
 <span class="sd">            model: The backend that contains all the data logic</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span></div>
 </pre></div>
 
